@@ -10,10 +10,10 @@ This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https:/
 - Select the distance in the optional Mod Settings menu or edit the settings file.
 - Targets eligible harvestable resources, not general loose world items or containers. The game still decides whether each resource can be harvested.
 
-## Install
+## Installation
 
-- **Vortex:** Install the ZIP through Vortex.
-- **Manual:** Copy the archive's `Data/PressToGather` folder into `<game>/Dawnwalker/Binaries/Win64/ue4ss/Mods/`.
+- **Vortex:** Install Press-to-Gather-Configurable.zip through Vortex, enable it and deploy.
+- **Manual:** Copy the archive's Data/PressToGather folder into ...\steamapps\common\The Blood of Dawnwalker\Dawnwalker\Binaries\Win64\ue4ss\Mods\, preserving the folder structure.
 
 ## Change the distance
 
