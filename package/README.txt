@@ -1,6 +1,6 @@
 # Toggleable Auto Gather - Press to Gather
 
-Gather nearby harvestable resources by holding **RB / R1 for 0.6 seconds**. The radius is **100 metres**. Short taps do not gather; each hold gathers once, and releasing the button permits another gather. Keyboard **O** also gathers once.
+Gather nearby harvestable resources by holding **RB / R1 for 0.6 seconds**. Choose a distance from **10 to 200 metres, in 10-metre steps**, in Mod Settings; the default is **100 metres**. Short taps do not gather; each hold gathers once, and releasing the button permits another gather. Keyboard **O** also gathers once.
 
 This personal customization is based on Toggleable Auto Gather by **Tic0311**: https://www.nexusmods.com/thebloodofdawnwalker/mods/381. It retains the original HarvestableComponent eligibility and interaction behavior. General world loot is excluded.
 
@@ -8,32 +8,37 @@ This personal customization is based on Toggleable Auto Gather by **Tic0311**: h
 
 - The Blood of Dawnwalker; reference Steam build 25232147.
 - UE4SS with `ExecuteInGameThreadWithDelay`, `LoopInGameThreadWithDelay`, and `CancelDelayedAction`. The reference is Framecore 2b, based on UE4SS revision 97b7e501c.
+- Dawnwalker Mod Settings 1.0.5 or later for the settings page; reference menu version 1.0.5.1. Gathering can run without the menu.
 - Only one Auto Gather range variant should be active.
 
 The controller binding reads the physical Unreal key. A remapped game action does not change this binding. Other game actions on the same button can still run. Gathering is blocked while paused, cinematic mode is active, the mouse cursor is shown, or movement input is disabled. After loading or a blocked input, release the button before beginning a new hold.
 
 ## Install or update with Vortex
 
-1. Close the game. Back up any personal Auto Gather `config.lua` preferences; this package replaces that file in full and does not merge settings.
+1. Close the game. Back up any personal Auto Gather `Scripts/config.lua` and `settings.ini` preferences. This package replaces `config.lua` in full and does not merge settings; it does not contain a personal `settings.ini`.
 2. Disable the existing Auto Gather entry and deploy in Vortex.
 3. Install `Toggleable-Auto-Gather.zip` through Vortex, replacing the existing entry. Select the UE4SS Lua mod type when requested. Keep just this range variant enabled.
 4. Deploy, then restart the game. Hold RB / R1 near harvestable resources, or press O.
 
-The runtime folder remains `Dawnwalker/Binaries/Win64/ue4ss/Mods/TogAutGat`. The package supplies `enabled.txt`, `Scripts/main.lua`, `Scripts/config.lua`, and `Scripts/ControllerHold.lua`. This replacement must win any conflicts on those files with an older Auto Gather variant.
+The runtime folder remains `Dawnwalker/Binaries/Win64/ue4ss/Mods/TogAutGat`. The package supplies `enabled.txt`, `mod_settings.ini`, and five Lua files in `Scripts`: `main.lua`, `config.lua`, `ControllerHold.lua`, `SettingsMenu.lua`, and `SettingsStore.lua`. This replacement must win any conflicts with an older Auto Gather variant.
 
 ## Configuration
 
-The package's `TogAutGat/Scripts/config.lua` contains:
+Open **Mod Settings → Toggleable Auto Gather - Press to Gather → Gather Distance**. Select **10–200 m** in **10 m** steps, choose **Apply**, then **load a save** to use the new distance. Restarting the game also applies saved values. The final entry, **Logging**, enables detailed troubleshooting and is Off by default.
+
+The mod creates `TogAutGat/settings.ini` on its first launch. Distance and Logging are read from this file at startup and when save loading completes. Changes made in the menu wait for one of those events; no settings file is polled during gameplay.
+
+The package's `TogAutGat/Scripts/config.lua` contains startup defaults and advanced controls:
 
 | Setting | Default | Meaning |
 | --- | --- | --- |
-| `GatherRadiusMeters` | `100` | Radius in metres, clamped to 1–100. |
+| `GatherRadiusMeters` | `100` | First-run distance, clamped to 10–200 and rounded to the nearest 10. Saved menu preferences take precedence afterward. |
 | `GatherKey` | `"Gamepad_RightShoulder"` | Native Unreal controller key; RB / R1. |
 | `GatherHoldSeconds` | `0.6` | Hold duration, clamped to 0.2–5 seconds. |
 | `KeyboardGatherKey` | `"O"` | UE4SS keyboard key; `false` disables the shortcut. |
-| `debugLogging` | `false` | Detailed events, errors and gather counts. |
+| `debugLogging` | `false` | First-run Logging default. Saved menu preferences take precedence afterward. |
 
-Apply configuration changes through your Vortex-managed files, then restart the game. Detailed logs are written to `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`, prefixed with `[TBODAutoGather]`. Detailed logging is off by default. Player readiness, the first detected controller press/hold, the first gather result, and actionable errors are still reported once. If discovery has stopped, keyboard O retries it; press O again once the player is ready.
+Apply advanced control changes through your Vortex-managed files, then restart the game. If the menu is unavailable, distance and Logging can be edited in the generated `settings.ini` before restarting. Detailed logs are written to `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`, prefixed with `[TBODAutoGather]`. Player readiness, the first detected controller press/hold, the first gather result, and actionable errors are reported once even with Logging Off. If discovery has stopped, keyboard O retries it; press O again once the player is ready.
 
 ## Uninstall
 
@@ -43,6 +48,8 @@ Disable or remove the entry in Vortex and deploy. Restart the game. To restore t
 
 `src` contains the runtime Lua and configuration. `upstream` retains the original scripts; `SOURCE.json` records their hashes and origin. `package` contains metadata and documentation. The ZIP keeps runtime files under `Data/TogAutGat` and release metadata at its root, with explicit Vortex instructions that prevent documentation from deploying into the game.
 
-To recreate the archive, place the three `src/*.lua` files in `Data/TogAutGat/Scripts` and `package/enabled.txt` in `Data/TogAutGat`. Put `package/mod.manifest`, `package/README.txt`, `package/vortex_override_instructions.json`, `LICENSE.txt`, `CHANGELOG.md`, `RELEASE-NOTES.md`, and `SOURCE.json` at the archive root. ZIP those contents as `Toggleable-Auto-Gather.zip`. Do not include the enclosing build folder or the upstream snapshots.
+To recreate the archive, place all five `src/*.lua` files in `Data/TogAutGat/Scripts`. Place `src/mod_settings.ini` and `package/enabled.txt` in `Data/TogAutGat`. Put `package/mod.manifest`, `package/README.txt`, `package/vortex_override_instructions.json`, `LICENSE.txt`, `CHANGELOG.md`, `RELEASE-NOTES.md`, `SOURCE.json`, and `ue4ss-common.lock.json` at the archive root, retaining the `LICENSES/ue4ss-common.txt` path. ZIP those contents as `Toggleable-Auto-Gather.zip`. Do not include the enclosing build folder, upstream snapshots, or a personal `settings.ini`.
+
+`SettingsStore.lua` is included from the MIT-licensed [ue4ss-common](https://github.com/my-mods/ue4ss-common) library. `ue4ss-common.lock.json` pins its source commit and file hashes; no separate common-library installation is required.
 
 Upstream rights remain with their author. See `LICENSE.txt`.

@@ -10,7 +10,8 @@
       "config.lua": "d30132ffaca57e41384f7e21a3402145f470964a34c8cd4e8bad68b145287a8b"
     }
   },
-  "customization": "RB/R1 hold 0.6s; 100m; native input lifecycle and bounded actor batches",
+  "customization": "RB/R1 hold 0.6s; Mod Settings distance 10-200m in 10m steps, default 100m; native input lifecycle and bounded actor batches",
+  "shared_dependency": "SettingsStore from ue4ss-common; exact commit, hashes and license pinned in ue4ss-common.lock.json",
   "reference_game_build": "25232147",
   "reference_ue4ss_sha": "97b7e501c19d8b2b7c662feee73aaa0dc1f0a4d1",
   "distribution": "Personal modification; upstream rights retained. No redistribution license supplied."

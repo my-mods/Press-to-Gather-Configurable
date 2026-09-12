@@ -1,2 +1,4 @@
 * text=auto eol=lf
 upstream/* -text
+src/SettingsStore.lua -text
+LICENSES/ue4ss-common.txt -text

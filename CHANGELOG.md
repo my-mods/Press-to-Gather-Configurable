@@ -2,6 +2,8 @@
 
 ## Development changes
 
+- Add Gather Distance to Mod Settings: 10–200 metres in 10-metre steps, with a default of 100 metres. Saved distance changes apply on save load or game restart.
+- Add a Logging toggle and persistent menu preferences using ue4ss-common.
 - Enable gathering from the local possessed pawn without waiting for character-stat initialization.
 - Report player readiness, first controller input and first gather outcome; keyboard O can retry exhausted player discovery.
 - Hold RB / R1 for 0.6 seconds to gather once; short taps do not gather.

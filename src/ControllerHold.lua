@@ -9,6 +9,7 @@ function M.start(settings, gather, log)
     local warnings, hookIds = {}, {}
     local firstReady, firstDown, firstHold = true, true, true
     local loading = false
+    local lastLoadingState, reloadRequested
     local function valid(object) return object ~= nil and object:IsValid() end
     local function same(a, b)
         return valid(a) and valid(b) and a:GetAddress() == b:GetAddress()
@@ -28,6 +29,14 @@ function M.start(settings, gather, log)
     end
     local function reset_hold()
         holdStart, armed, fired = nil, false, false
+    end
+    local function reload_settings()
+        if loading or not reloadRequested then return end
+        reloadRequested=false
+        if type(settings.reload)=='function' then
+            local ok,err=pcall(settings.reload)
+            if not ok then warn('settingsReload', 'Mod Settings reload failed: '..tostring(err)) end
+        end
     end
     local function stop_poll()
         if pollHandle then CancelDelayedAction(pollHandle); pollHandle = nil end
@@ -131,6 +140,7 @@ function M.start(settings, gather, log)
         if pending ~= job then return end
         job.handle = nil
         if loading then pending=nil; return end
+        reload_settings()
         job.attempts = job.attempts + 1
         local ok, scope, reason = pcall(discover, job)
         if not ok then
@@ -187,6 +197,7 @@ function M.start(settings, gather, log)
                 pending = nil
                 return
             end
+            reload_settings()
             -- Coalesce construction bursts without extending an active retry window.
             if pending then return end
             begin_window(reason)
@@ -211,14 +222,16 @@ function M.start(settings, gather, log)
     hook('/Script/DogwoodCombat.CombatSubsystem:OnLoadingScreenStateChanged',
         function() end, function(_, state)
             local value=tonumber(type(state)=='number' and state or state:get())
-            if value and value >= 0 and value <= 4 then
+            if value and value >= 0 and value <= 4 and value~=lastLoadingState then
+                lastLoadingState=value
+                if value==0 then reloadRequested=true end
                 loading=value~=0
                 generation=generation+1
                 reset_hold()
                 wake('loading screen')
             end
         end)
-    for _, path in ipairs({'/Script/Dawnwalker.DawnwalkerPlayerCharacter','/Script/DogwoodStats.CharDevAttributeSet'}) do
+    for _, path in ipairs({'/Script/Dawnwalker.DawnwalkerPlayerCharacter'}) do
         local ok, err = pcall(NotifyOnNewObject, path, function() wake('player construction') end)
         if not ok then warn(path, 'Player notification unavailable: '..tostring(err)) end
     end

@@ -12,7 +12,7 @@
   {
     "type": "attribute",
     "key": "description",
-    "value": "Hold RB / R1 for 0.6 seconds to gather harvestable resources within 100 metres. Optional keyboard O shortcut."
+    "value": "Hold RB / R1 for 0.6 seconds to gather harvestable resources. Configure a 10-200 metre distance in 10-metre steps in Mod Settings; default 100 metres. Optional keyboard O shortcut."
   },
   {
     "type": "attribute",
@@ -24,7 +24,9 @@
       "LICENSE.txt",
       "CHANGELOG.md",
       "RELEASE-NOTES.md",
-      "SOURCE.json"
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt"
     ]
   },
   {
@@ -37,7 +39,9 @@
       "LICENSE.txt",
       "CHANGELOG.md",
       "RELEASE-NOTES.md",
-      "SOURCE.json"
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt"
     ]
   },
   {
@@ -50,7 +54,9 @@
       "LICENSE.txt",
       "CHANGELOG.md",
       "RELEASE-NOTES.md",
-      "SOURCE.json"
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt"
     ]
   },
   {
@@ -63,7 +69,9 @@
       "LICENSE.txt",
       "CHANGELOG.md",
       "RELEASE-NOTES.md",
-      "SOURCE.json"
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt"
     ]
   },
   {
@@ -76,7 +84,9 @@
       "LICENSE.txt",
       "CHANGELOG.md",
       "RELEASE-NOTES.md",
-      "SOURCE.json"
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt"
     ]
   },
   {
@@ -89,7 +99,54 @@
       "LICENSE.txt",
       "CHANGELOG.md",
       "RELEASE-NOTES.md",
-      "SOURCE.json"
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "ue4ss-common.lock.json",
+    "key": "togAutGatReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "LICENSES/ue4ss-common.txt",
+    "key": "togAutGatReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "LICENSES\\ue4ss-common.txt",
+    "key": "togAutGatReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt"
     ]
   }
 ]

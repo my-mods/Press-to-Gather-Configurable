@@ -29,13 +29,19 @@ if keyboardName == nil then keyboardName = 'O' end
 local keyboardKey = keyboardName ~= false and type(keyboardName)=='string' and Key[keyboardName] or nil
 if keyboardName ~= false and not keyboardKey then log('Invalid KeyboardGatherKey; keyboard shortcut disabled.') end
 local settings = {
-    radius_uu = math.floor(number(config.GatherRadiusMeters,100,1,100,'GatherRadiusMeters')*UU_PER_M),
+    radius_uu = math.floor(number(config.GatherRadiusMeters,100,10,200,'GatherRadiusMeters')/10+0.5)*10*UU_PER_M,
     hold_seconds = number(config.GatherHoldSeconds,0.6,0.2,5,'GatherHoldSeconds'),
     gather_key = nativeKey,
     keyboard_key = keyboardKey,
     debugLogging = config.debugLogging == true,
 }
-local RADIUS_UU = settings.radius_uu
+local directory=debug.getinfo(1,'S').source:match('^@(.+[/\\])[^/\\]+$')
+if directory then
+    local menuOK,menuError=pcall(function() require('SettingsMenu').bind(directory,settings,log) end)
+    if not menuOK then log('Mod Settings could not initialize: '..tostring(menuError)) end
+else
+    log('Mod Settings could not resolve the script directory; using config.lua defaults.')
+end
 local function dist2(a,b)
     local x,y,z = a.X-b.X,a.Y-b.Y,a.Z-b.Z
     return x*x+y*y+z*z
@@ -93,7 +99,7 @@ local activeJob
 local firstGatherReport = true
 local function gather_nearby(scope)
     if activeJob then return end
-    local job = {scope=scope, index=1, gathered=0, requested=0, near=0, skipped=0}
+    local job = {scope=scope, radius=settings.radius_uu, index=1, gathered=0, requested=0, near=0, skipped=0}
     activeJob = job
     if settings.debugLogging then job.started = os.clock() end
     local function finish(status)
@@ -102,7 +108,7 @@ local function gather_nearby(scope)
         if firstGatherReport or settings.debugLogging then
             firstGatherReport=false
             log(string.format('Gather %s: scanned %d; within %.0fm %d; interaction requests %d; immediate state changes %d; skipped %d.',
-                status or 'complete',job.actors and #job.actors or 0,RADIUS_UU/UU_PER_M,
+                status or 'complete',job.actors and #job.actors or 0,job.radius/UU_PER_M,
                 job.near,job.requested,job.gathered,job.skipped))
         end
         if settings.debugLogging then
@@ -134,7 +140,7 @@ local function gather_nearby(scope)
                         job.skipped=job.skipped+1; return
                     end
                     local distance=dist2(job.position,actor:K2_GetActorLocation())
-                    if distance <= RADIUS_UU*RADIUS_UU then
+                    if distance <= job.radius*job.radius then
                         job.near=job.near+1
                         local comp,itemName=eligible_comp(actor)
                         if comp then
@@ -160,6 +166,6 @@ end
 
 if require('ControllerHold').start(settings,gather_nearby,log) then
     log(string.format('Configured v1.1.0: hold %s for %.1fs to gather within %.0fm%s; waiting for local player.',
-        settings.gather_key,settings.hold_seconds,RADIUS_UU/UU_PER_M,
+        settings.gather_key,settings.hold_seconds,settings.radius_uu/UU_PER_M,
         keyboardKey and ('; keyboard '..keyboardName) or ''))
 end

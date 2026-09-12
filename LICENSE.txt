@@ -4,3 +4,8 @@ Source: https://www.nexusmods.com/thebloodofdawnwalker/mods/381
 No general redistribution license was supplied with the installed package.
 Original rights and the author's permissions remain in effect. This personal
 modification does not grant permission to redistribute the upstream work.
+
+The included SettingsStore.lua module is from my-mods/ue4ss-common and is
+licensed under the MIT License. See LICENSES/ue4ss-common.txt and the pinned
+provenance in ue4ss-common.lock.json. That license applies to the shared module,
+not to the original Auto Gather scripts.
