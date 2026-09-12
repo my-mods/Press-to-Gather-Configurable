@@ -54,8 +54,11 @@ function M.start(settings, gather, log)
     local function blocked_reason(scope)
         local pc = scope.controller
         if gameplay:IsGamePaused(scope.world) then return 'game paused' end
-        if pc.bCinematicMode then return 'cinematic mode' end
-        if pc.bShowMouseCursor then return 'mouse cursor visible' end
+        -- bCinematicMode is not a reflected PlayerController property. UE4SS
+        -- returns a truthy invalid UObject for that lookup, blocking every input.
+        -- Use the exposed pause/cursor/movement state; cutscenes that lock
+        -- movement are covered by IsMoveInputIgnored below.
+        if pc.bShowMouseCursor == true then return 'mouse cursor visible' end
         if pc:IsMoveInputIgnored() then return 'movement input disabled' end
     end
     local function playable(scope)

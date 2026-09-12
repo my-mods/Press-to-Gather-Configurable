@@ -11,7 +11,7 @@ This personal customization is based on Toggleable Auto Gather by **Tic0311**: h
 - Dawnwalker Mod Settings 1.0.5 or later for the settings page; reference menu version 1.0.5.1. Gathering can run without the menu.
 - Only one Auto Gather range variant should be active.
 
-The controller binding reads the physical Unreal key. A remapped game action does not change this binding. Other game actions on the same button can still run. Gathering is blocked while paused, cinematic mode is active, the mouse cursor is shown, or movement input is disabled. After loading or a blocked input, release the button before beginning a new hold.
+The controller binding reads the physical Unreal key. A remapped game action does not change this binding. Other game actions on the same button can still run. Gathering is blocked while loading, paused, the mouse cursor is shown, or movement input is disabled, including cutscenes that lock movement. After loading or a blocked input, release the button before beginning a new hold.
 
 ## Install or update with Vortex
 
