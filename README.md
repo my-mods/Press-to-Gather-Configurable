@@ -33,7 +33,7 @@ The package's `TogAutGat/Scripts/config.lua` contains:
 | `KeyboardGatherKey` | `"O"` | UE4SS keyboard key; `false` disables the shortcut. |
 | `debugLogging` | `false` | Detailed events, errors and gather counts. |
 
-Apply configuration changes through your Vortex-managed files, then restart the game. Detailed logs are written to `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`, prefixed with `[TBODAutoGather]`. Logging is off by default; startup and actionable errors are still reported.
+Apply configuration changes through your Vortex-managed files, then restart the game. Detailed logs are written to `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`, prefixed with `[TBODAutoGather]`. Detailed logging is off by default. Player readiness, the first detected controller press/hold, the first gather result, and actionable errors are still reported once. If discovery has stopped, keyboard O retries it; press O again once the player is ready.
 
 ## Uninstall
 

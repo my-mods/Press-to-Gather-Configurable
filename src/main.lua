@@ -78,32 +78,41 @@ local function gather(comp, itemName, d2)
     comp:StartInteraction()
 
     local dist = math.sqrt(d2)
-    if settings.debugLogging and tonumber(tostring(comp:GetInteractionState())) ~= STATE_INTERACTABLE then
+    local state = tonumber(tostring(comp:GetInteractionState()))
+    local changed = state ~= nil and state ~= STATE_INTERACTABLE
+    if settings.debugLogging and changed then
         log(string.format("Gathered %s at %.0fu", itemName, dist))
     end
+    return changed
 end
 
 -- One requested gather job at a time. World discovery occurs once per request.
 -- Process at most eight actors or one millisecond per 16ms continuation; an
 -- indivisible FindAllOf scan remains inherited from upstream and needs live timing.
 local activeJob
+local firstGatherReport = true
 local function gather_nearby(scope)
     if activeJob then return end
-    local job = {scope=scope, index=1, gathered=0, skipped=0}
+    local job = {scope=scope, index=1, gathered=0, requested=0, near=0, skipped=0}
     activeJob = job
     if settings.debugLogging then job.started = os.clock() end
-    local function finish()
+    local function finish(status)
         if activeJob ~= job then return end
         activeJob = nil
+        if firstGatherReport or settings.debugLogging then
+            firstGatherReport=false
+            log(string.format('Gather %s: scanned %d; within %.0fm %d; interaction requests %d; immediate state changes %d; skipped %d.',
+                status or 'complete',job.actors and #job.actors or 0,RADIUS_UU/UU_PER_M,
+                job.near,job.requested,job.gathered,job.skipped))
+        end
         if settings.debugLogging then
-            log(string.format('Gather complete: %d harvestable(s), %d skipped, radius %.0fm, elapsed %.3fs.',
-                job.gathered,job.skipped,RADIUS_UU/UU_PER_M,os.clock()-job.started))
+            log(string.format('Gather elapsed %.3fs.',os.clock()-job.started))
         end
     end
     local function step()
         if activeJob ~= job then return end
         local worked, err = pcall(function()
-            if not scope.isCurrent() then finish(); return end
+            if not scope.isCurrent() then finish('interrupted'); return end
             if not job.actors then
                 local position = scope.pawn:K2_GetActorLocation()
                 -- Copy returned struct fields; never retain the borrowed wrapper.
@@ -126,8 +135,12 @@ local function gather_nearby(scope)
                     end
                     local distance=dist2(job.position,actor:K2_GetActorLocation())
                     if distance <= RADIUS_UU*RADIUS_UU then
+                        job.near=job.near+1
                         local comp,itemName=eligible_comp(actor)
-                        if comp then gather(comp,itemName,distance);job.gathered=job.gathered+1 end
+                        if comp then
+                            job.requested=job.requested+1
+                            if gather(comp,itemName,distance) then job.gathered=job.gathered+1 end
+                        end
                     end
                 end)
                 if not okActor then
@@ -146,7 +159,7 @@ local function gather_nearby(scope)
 end
 
 if require('ControllerHold').start(settings,gather_nearby,log) then
-    log(string.format('Loaded v1.1.0: hold %s for %.1fs to gather within %.0fm%s.',
+    log(string.format('Configured v1.1.0: hold %s for %.1fs to gather within %.0fm%s; waiting for local player.',
         settings.gather_key,settings.hold_seconds,RADIUS_UU/UU_PER_M,
         keyboardKey and ('; keyboard '..keyboardName) or ''))
 end

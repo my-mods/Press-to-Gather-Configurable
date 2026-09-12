@@ -2,6 +2,8 @@
 
 ## Development changes
 
+- Enable gathering from the local possessed pawn without waiting for character-stat initialization.
+- Report player readiness, first controller input and first gather outcome; keyboard O can retry exhausted player discovery.
 - Hold RB / R1 for 0.6 seconds to gather once; short taps do not gather.
 - Increase the gather radius and supported maximum to 100 metres.
 - Keep keyboard O as an optional gather shortcut.
