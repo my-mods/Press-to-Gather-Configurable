@@ -5,7 +5,7 @@ local Store = require('SettingsStore')
 local distances = {}
 for value=10,200,10 do distances[#distances+1]=value end
 local schema = {
-    {key='GatherRadiusMeters',values=distances,default=100},
+    {key='GatherRadiusMeters',values=distances,default=20},
     {key='debugLogging',values={0,1},default=0},
 }
 

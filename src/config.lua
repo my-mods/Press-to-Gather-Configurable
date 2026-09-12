@@ -1,7 +1,7 @@
 return {
     -- First-run default only. Use Mod Settings > Gather Distance thereafter.
     -- Allowed distance: 10-200 metres in steps of 10.
-    GatherRadiusMeters = 100,
+    GatherRadiusMeters = 20,
 
     -- Native Unreal button name: RB on Xbox, R1 on PlayStation.
     GatherKey = "Gamepad_RightShoulder",

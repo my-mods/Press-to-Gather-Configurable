@@ -2,9 +2,10 @@
 
 ## Development changes
 
+- Set the default gather distance to 20 metres.
 - Rename the mod to Press to Gather - Configurable, including its menu entry and runtime folder.
 - Fix RB and keyboard O being blocked during normal gameplay by an unsupported controller cinematic-state lookup.
-- Add Gather Distance to Mod Settings: 10–200 metres in 10-metre steps, with a default of 100 metres. Saved distance changes apply on save load or game restart.
+- Add Gather Distance to Mod Settings: 10–200 metres in 10-metre steps, with a default of 20 metres. Saved distance changes apply on save load or game restart.
 - Add a Logging toggle and persistent menu preferences using ue4ss-common.
 - Enable gathering from the local possessed pawn without waiting for character-stat initialization.
 - Report player readiness, first controller input and first gather outcome; keyboard O can retry exhausted player discovery.

@@ -29,7 +29,7 @@ if keyboardName == nil then keyboardName = 'O' end
 local keyboardKey = keyboardName ~= false and type(keyboardName)=='string' and Key[keyboardName] or nil
 if keyboardName ~= false and not keyboardKey then log('Invalid KeyboardGatherKey; keyboard shortcut disabled.') end
 local settings = {
-    radius_uu = math.floor(number(config.GatherRadiusMeters,100,10,200,'GatherRadiusMeters')/10+0.5)*10*UU_PER_M,
+    radius_uu = math.floor(number(config.GatherRadiusMeters,20,10,200,'GatherRadiusMeters')/10+0.5)*10*UU_PER_M,
     hold_seconds = number(config.GatherHoldSeconds,0.6,0.2,5,'GatherHoldSeconds'),
     gather_key = nativeKey,
     keyboard_key = keyboardKey,

@@ -1,6 +1,6 @@
 # Press to Gather - Configurable
 
-Gather nearby harvestable resources by holding **RB / R1 for 0.6 seconds**. Choose a distance from **10 to 200 metres, in 10-metre steps**, in Mod Settings; the default is **100 metres**. Short taps do not gather; each hold gathers once, and releasing the button permits another gather. Keyboard **O** also gathers once.
+Gather nearby harvestable resources by holding **RB / R1 for 0.6 seconds**. Choose a distance from **10 to 200 metres, in 10-metre steps**, in Mod Settings; the default is **20 metres**. Short taps do not gather; each hold gathers once, and releasing the button permits another gather. Keyboard **O** also gathers once.
 
 This personal customization is based on Toggleable Auto Gather by **Tic0311**: https://www.nexusmods.com/thebloodofdawnwalker/mods/381. It retains the original HarvestableComponent eligibility and interaction behavior. General world loot is excluded.
 
@@ -26,7 +26,7 @@ The controller binding reads the physical Unreal key. A remapped game action doe
 
 The runtime folder is `Dawnwalker/Binaries/Win64/ue4ss/Mods/PressToGather`. The package supplies `enabled.txt`, `mod_settings.ini`, and five Lua files in `Scripts`: `main.lua`, `config.lua`, `ControllerHold.lua`, `SettingsMenu.lua`, and `SettingsStore.lua`. This replacement must win any conflicts with an older Auto Gather variant.
 
-The renamed mod creates fresh preferences under `PressToGather` from its packaged defaults: 100 m and Logging Off. It does not read or import the old `TogAutGat/settings.ini`. Later updates use the existing `PressToGather/settings.ini`. Keep the old `TogAutGat` mod disabled to avoid duplicate input handlers and menu entries.
+The renamed mod creates fresh preferences under `PressToGather` from its packaged defaults: 20 m and Logging Off. It does not read or import the old `TogAutGat/settings.ini`. Later updates use the existing `PressToGather/settings.ini`. Keep the old `TogAutGat` mod disabled to avoid duplicate input handlers and menu entries.
 
 ## Configuration
 
@@ -38,7 +38,7 @@ The package's `PressToGather/Scripts/config.lua` contains startup defaults and a
 
 | Setting | Default | Meaning |
 | --- | --- | --- |
-| `GatherRadiusMeters` | `100` | First-run distance, clamped to 10–200 and rounded to the nearest 10. Saved menu preferences take precedence afterward. |
+| `GatherRadiusMeters` | `20` | First-run distance, clamped to 10–200 and rounded to the nearest 10. Saved menu preferences take precedence afterward. |
 | `GatherKey` | `"Gamepad_RightShoulder"` | Native Unreal controller key; RB / R1. |
 | `GatherHoldSeconds` | `0.6` | Hold duration, clamped to 0.2–5 seconds. |
 | `KeyboardGatherKey` | `"O"` | UE4SS keyboard key; `false` disables the shortcut. |

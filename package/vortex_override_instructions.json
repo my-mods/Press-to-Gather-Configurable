@@ -12,7 +12,7 @@
   {
     "type": "attribute",
     "key": "description",
-    "value": "Hold RB / R1 for 0.6 seconds to gather harvestable resources. Configure a 10-200 metre distance in 10-metre steps in Mod Settings; default 100 metres. Optional keyboard O shortcut."
+    "value": "Hold RB / R1 for 0.6 seconds to gather harvestable resources. Configure a 10-200 metre distance in 10-metre steps in Mod Settings; default 20 metres. Optional keyboard O shortcut."
   },
   {
     "type": "attribute",
