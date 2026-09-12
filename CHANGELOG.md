@@ -1,6 +1,6 @@
 # Changes
 
-## Version 2
+## Version 1.0
 
 - Add controller gathering by holding RB / R1 for 0.6 seconds, once per hold, with keyboard O as an optional shortcut.
 - Add a Mod Settings distance control from 10 to 200 metres in 10-metre steps, with a 20-metre default.

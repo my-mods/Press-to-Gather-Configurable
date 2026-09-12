@@ -5,7 +5,7 @@
     <modid>PressToGather</modid>
     <description>Hold RB / R1 for 0.6 seconds to gather harvestable resources. Configure a 10-200 metre distance in 10-metre steps in Mod Settings; default 20 metres. Optional keyboard O shortcut.</description>
     <author>Tic0311; personal controller customization</author>
-    <version>2</version>
+    <version>1.0</version>
     <created_on>2026-09-10</created_on>
   </info>
   <supports>
