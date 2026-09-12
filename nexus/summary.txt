@@ -1,0 +1,1 @@
+Hold RB / R1 to gather nearby harvestable plants and resources, or press O on your keyboard. Set the distance from 10 to 200 m in Mod Settings, in 10 m steps; default 20 m. Supports Framecore UE4SS Performance mode.

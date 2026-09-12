@@ -1,0 +1,39 @@
+{
+  "url": "https://www.nexusmods.com/thebloodofdawnwalker/mods/449",
+  "title": "Press to Gather - Configurable",
+  "version": "1.0",
+  "game": "The Blood of Dawnwalker",
+  "author": "Tic0311 and CamilleBC",
+  "category": "Gameplay",
+  "language": "English",
+  "tags": [
+    "Gameplay",
+    "Quality of Life",
+    "AI Assisted",
+    "AI Media"
+  ],
+  "summary": "Hold RB / R1 to gather nearby harvestable plants and resources, or press O on your keyboard. Set the distance from 10 to 200 m in Mod Settings, in 10 m steps; default 20 m. Supports Framecore UE4SS Performance mode.",
+  "file": {
+    "name": "Press to Gather - Configurable",
+    "archive_filename": "Press-to-Gather-Configurable.zip",
+    "version": "1.0",
+    "category": "main",
+    "description": "Hold RB / R1 for 0.6 seconds or press O to gather nearby resources. Default 20 m; configure 10–200 m in 10 m steps using the optional Mod Setting Menu or settings.ini. Supports Framecore UE4SS Performance mode.",
+    "sha256": "9e2d892ae192f13bf95295ac2c6cd6b2d1bbe8d8ad53de52c8eb26388812803d"
+  },
+  "required": [
+    {
+      "name": "UE4SS for BoD",
+      "url": "https://www.nexusmods.com/thebloodofdawnwalker/mods/283",
+      "version": "2b or later"
+    }
+  ],
+  "optional": [
+    {
+      "name": "Mod Setting Menu",
+      "url": "https://www.nexusmods.com/thebloodofdawnwalker/mods/271",
+      "version": "1.0.5 or later"
+    }
+  ],
+  "artwork_license_scope": "Game imagery and other third-party material retain their owners’ rights and are excluded from mod-code license grants."
+}
