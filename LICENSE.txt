@@ -1,9 +1,13 @@
-The original Toggleable Auto Gather scripts are by Tic0311.
+Press to Gather - Configurable is a personal modification of the original
+Toggleable Auto Gather scripts by Tic0311.
 Source: https://www.nexusmods.com/thebloodofdawnwalker/mods/381
 
-No general redistribution license was supplied with the installed package.
-Original rights and the author's permissions remain in effect. This personal
-modification does not grant permission to redistribute the upstream work.
+The upstream Nexus permissions, checked on 12 September 2026, allow modified
+versions and redistribution with attribution. They prohibit selling works that
+use these assets and require separate approval for Donation Points. Original
+rights remain with their owners; no broader license is granted here.
+
+Tic0311 credits Volitio's Auto Gathering as the inspiration for the original mod.
 
 The included SettingsStore.lua module is from my-mods/ue4ss-common and is
 licensed under the MIT License. See LICENSES/ue4ss-common.txt and the pinned

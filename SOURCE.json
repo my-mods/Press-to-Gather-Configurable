@@ -1,4 +1,6 @@
 {
+  "name": "Press to Gather - Configurable",
+  "repository": "https://github.com/my-mods/Press-to-Gather-Configurable",
   "upstream": {
     "name": "Toggleable Auto Gather - Press to Gather",
     "author": "Tic0311",
@@ -14,5 +16,10 @@
   "shared_dependency": "SettingsStore from ue4ss-common; exact commit, hashes and license pinned in ue4ss-common.lock.json",
   "reference_game_build": "25232147",
   "reference_ue4ss_sha": "97b7e501c19d8b2b7c662feee73aaa0dc1f0a4d1",
-  "distribution": "Personal modification; upstream rights retained. No redistribution license supplied."
+  "distribution": {
+    "basis": "Upstream Nexus permissions permit credited modifications and redistribution. Sales are prohibited; Donation Points require separate permission.",
+    "permissions_url": "https://www.nexusmods.com/thebloodofdawnwalker/mods/381",
+    "checked": "2026-09-12",
+    "scope": "Personal mod; original rights retained. The bundled shared module has its own MIT license."
+  }
 }

@@ -1,6 +1,6 @@
 -- Based on Toggleable Auto Gather by Tic0311, script v1.1.0.
 -- Keeps original HarvestableComponent eligibility and StartInteraction behavior.
-local MOD_NAME, HARVESTABLE_CLASS = "TBODAutoGather", "Harvestable"
+local MOD_NAME, HARVESTABLE_CLASS = "PressToGather", "Harvestable"
 local STATE_INTERACTABLE, UU_PER_M = 4, 100
 local function log(message) print("["..MOD_NAME.."] "..message.."\n") end
 local ok, config = pcall(require, "config")

@@ -2,7 +2,7 @@
   {
     "type": "attribute",
     "key": "customFileName",
-    "value": "Toggleable Auto Gather - Press to Gather"
+    "value": "Press to Gather - Configurable"
   },
   {
     "type": "attribute",
@@ -17,7 +17,7 @@
   {
     "type": "attribute",
     "source": "mod.manifest",
-    "key": "togAutGatReleaseMaterials",
+    "key": "pressToGatherReleaseMaterials",
     "value": [
       "mod.manifest",
       "README.txt",
@@ -32,7 +32,7 @@
   {
     "type": "attribute",
     "source": "README.txt",
-    "key": "togAutGatReleaseMaterials",
+    "key": "pressToGatherReleaseMaterials",
     "value": [
       "mod.manifest",
       "README.txt",
@@ -47,7 +47,7 @@
   {
     "type": "attribute",
     "source": "LICENSE.txt",
-    "key": "togAutGatReleaseMaterials",
+    "key": "pressToGatherReleaseMaterials",
     "value": [
       "mod.manifest",
       "README.txt",
@@ -62,7 +62,7 @@
   {
     "type": "attribute",
     "source": "CHANGELOG.md",
-    "key": "togAutGatReleaseMaterials",
+    "key": "pressToGatherReleaseMaterials",
     "value": [
       "mod.manifest",
       "README.txt",
@@ -77,7 +77,7 @@
   {
     "type": "attribute",
     "source": "RELEASE-NOTES.md",
-    "key": "togAutGatReleaseMaterials",
+    "key": "pressToGatherReleaseMaterials",
     "value": [
       "mod.manifest",
       "README.txt",
@@ -92,7 +92,7 @@
   {
     "type": "attribute",
     "source": "SOURCE.json",
-    "key": "togAutGatReleaseMaterials",
+    "key": "pressToGatherReleaseMaterials",
     "value": [
       "mod.manifest",
       "README.txt",
@@ -107,7 +107,7 @@
   {
     "type": "attribute",
     "source": "ue4ss-common.lock.json",
-    "key": "togAutGatReleaseMaterials",
+    "key": "pressToGatherReleaseMaterials",
     "value": [
       "mod.manifest",
       "README.txt",
@@ -122,7 +122,7 @@
   {
     "type": "attribute",
     "source": "LICENSES/ue4ss-common.txt",
-    "key": "togAutGatReleaseMaterials",
+    "key": "pressToGatherReleaseMaterials",
     "value": [
       "mod.manifest",
       "README.txt",
@@ -137,7 +137,7 @@
   {
     "type": "attribute",
     "source": "LICENSES\\ue4ss-common.txt",
-    "key": "togAutGatReleaseMaterials",
+    "key": "pressToGatherReleaseMaterials",
     "value": [
       "mod.manifest",
       "README.txt",
