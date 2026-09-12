@@ -1,0 +1,6 @@
+The original Toggleable Auto Gather scripts are by Tic0311.
+Source: https://www.nexusmods.com/thebloodofdawnwalker/mods/381
+
+No general redistribution license was supplied with the installed package.
+Original rights and the author's permissions remain in effect. This personal
+modification does not grant permission to redistribute the upstream work.

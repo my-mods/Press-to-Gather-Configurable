@@ -1,0 +1,95 @@
+[
+  {
+    "type": "attribute",
+    "key": "customFileName",
+    "value": "Toggleable Auto Gather - Press to Gather"
+  },
+  {
+    "type": "attribute",
+    "key": "version",
+    "value": "2"
+  },
+  {
+    "type": "attribute",
+    "key": "description",
+    "value": "Hold RB / R1 for 0.6 seconds to gather harvestable resources within 100 metres. Optional keyboard O shortcut."
+  },
+  {
+    "type": "attribute",
+    "source": "mod.manifest",
+    "key": "togAutGatReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "README.txt",
+    "key": "togAutGatReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "LICENSE.txt",
+    "key": "togAutGatReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "CHANGELOG.md",
+    "key": "togAutGatReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "RELEASE-NOTES.md",
+    "key": "togAutGatReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "SOURCE.json",
+    "key": "togAutGatReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json"
+    ]
+  }
+]

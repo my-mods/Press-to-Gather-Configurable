@@ -1,0 +1,17 @@
+{
+  "upstream": {
+    "name": "Toggleable Auto Gather - Press to Gather",
+    "author": "Tic0311",
+    "url": "https://www.nexusmods.com/thebloodofdawnwalker/mods/381",
+    "installed_file_version": "2",
+    "script_version": "1.1.0",
+    "files": {
+      "main.lua": "f1ba0256f31d5d8733379d9e402c68ab3c2992be79dd700f5acb8dd4190f2c21",
+      "config.lua": "d30132ffaca57e41384f7e21a3402145f470964a34c8cd4e8bad68b145287a8b"
+    }
+  },
+  "customization": "RB/R1 hold 0.6s; 100m; native input lifecycle and bounded actor batches",
+  "reference_game_build": "25232147",
+  "reference_ue4ss_sha": "97b7e501c19d8b2b7c662feee73aaa0dc1f0a4d1",
+  "distribution": "Personal modification; upstream rights retained. No redistribution license supplied."
+}
