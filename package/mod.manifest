@@ -3,7 +3,7 @@
   <info>
     <name>Press to Gather - Configurable</name>
     <modid>PressToGather</modid>
-    <description>Hold RB / R1 for 0.6 seconds to gather harvestable resources. Configure a 10-200 metre distance in 10-metre steps in Mod Settings; default 20 metres. Optional keyboard O shortcut.</description>
+    <description>Hold B / Circle for 0.6 seconds by default to gather harvestable resources. Choose the controller button and a 10-200 metre distance in the optional Mod Settings menu; default 20 metres. Optional keyboard O shortcut.</description>
     <author>Tic0311; personal controller customization</author>
     <version>1.0</version>
     <created_on>2026-09-10</created_on>
@@ -12,6 +12,6 @@
     <game>The Blood of Dawnwalker</game>
     <steam_build>25232147</steam_build>
     <requires>UE4SS with game-thread delayed actions; reference Framecore 2b, 97b7e501c</requires>
-    <requires>Dawnwalker Mod Settings 1.0.5 or later for the settings page</requires>
+    <optional>Dawnwalker Mod Settings 1.0.5 or later for the settings page</optional>
   </supports>
 </mod>

@@ -19,10 +19,12 @@ local function number(value, fallback, minimum, maximum, name)
     end
     return math.max(minimum, math.min(maximum, value))
 end
-local nativeKey = config.GatherKey or 'Gamepad_RightShoulder'
-if type(nativeKey) ~= 'string' or not nativeKey:match('^Gamepad_[%w_]+$') then
-    log('GatherKey is invalid; using Gamepad_RightShoulder.')
-    nativeKey = 'Gamepad_RightShoulder'
+local Bindings = require('ControllerBindings')
+local nativeKey = config.GatherKey
+if nativeKey == nil then nativeKey = Bindings.key(Bindings.default) end
+if type(nativeKey) ~= 'string' or Bindings.id(nativeKey) == nil then
+    log('GatherKey is invalid; using Gamepad_FaceButton_Right (B / Circle).')
+    nativeKey = Bindings.key(Bindings.default)
 end
 local keyboardName = config.KeyboardGatherKey
 if keyboardName == nil then keyboardName = 'O' end
@@ -165,7 +167,7 @@ local function gather_nearby(scope)
 end
 
 if require('ControllerHold').start(settings,gather_nearby,log) then
-    log(string.format('Configured v1.1.0: hold %s for %.1fs to gather within %.0fm%s; waiting for local player.',
+    log(string.format('Configured: hold %s for %.1fs to gather within %.0fm%s; waiting for local player.',
         settings.gather_key,settings.hold_seconds,settings.radius_uu/UU_PER_M,
         keyboardKey and ('; keyboard '..keyboardName) or ''))
 end

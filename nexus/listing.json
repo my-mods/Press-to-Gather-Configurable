@@ -12,14 +12,14 @@
     "AI Assisted",
     "AI Media"
   ],
-  "summary": "Hold RB / R1 to gather nearby harvestable plants and resources, or press O on your keyboard. Set the distance from 10 to 200 m in Mod Settings, in 10 m steps; default 20 m. Supports Framecore UE4SS Performance mode.",
+  "summary": "Hold B / Circle to gather nearby harvestable resources, or press O. Choose your controller button and a 10–200 m distance in the optional Mod Settings menu. Defaults: 0.6-second hold and 20 m. Supports Framecore UE4SS Performance mode.",
   "file": {
     "name": "Press to Gather - Configurable",
     "archive_filename": "Press-to-Gather-Configurable.zip",
     "version": "1.0",
     "category": "main",
-    "description": "Hold RB / R1 for 0.6 seconds or press O to gather nearby resources. Default 20 m; configure 10–200 m in 10 m steps using the optional Mod Setting Menu or settings.ini. Supports Framecore UE4SS Performance mode.",
-    "sha256": "9e2d892ae192f13bf95295ac2c6cd6b2d1bbe8d8ad53de52c8eb26388812803d"
+    "description": "Choose your gather button in the optional Mod Settings menu. Hold B / Circle for 0.6 seconds by default, or press O. Default distance 20 m; configure 10–200 m in 10 m steps using the menu or settings.ini. Supports Framecore UE4SS Performance mode.",
+    "sha256": "66a0abb654de2cca0a402cc39db199821eeeffb58d1f5d4abe7c3fc5b87d8fe5"
   },
   "required": [
     {

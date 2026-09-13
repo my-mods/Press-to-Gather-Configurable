@@ -3,7 +3,7 @@ local M = {}
 
 function M.start(settings, gather, log)
     local POLL_MS, RETRY_MS, MAX_ATTEMPTS = 50, 250, 40
-    local engine, gameplay, inputKey
+    local engine, gameplay, inputKey, inputKeyName
     local owner, pollHandle, pending, wakeHandle, generation = nil, nil, nil, nil, 0
     local holdStart, armed, fired = nil, false, false
     local warnings, hookIds = {}, {}
@@ -30,12 +30,28 @@ function M.start(settings, gather, log)
     local function reset_hold()
         holdStart, armed, fired = nil, false, false
     end
+    local function refresh_input_key()
+        if inputKeyName==settings.gather_key then return end
+        -- Cache the structured FKey once per binding change, outside polling.
+        local nextKey={KeyName=FName(settings.gather_key)}
+        inputKey,inputKeyName=nextKey,settings.gather_key
+        reset_hold()
+        firstDown,firstHold=true,true
+    end
     local function reload_settings()
         if loading or not reloadRequested then return end
         reloadRequested=false
         if type(settings.reload)=='function' then
-            local ok,err=pcall(settings.reload)
-            if not ok then warn('settingsReload', 'Mod Settings reload failed: '..tostring(err)) end
+            local ok,result=pcall(settings.reload)
+            if not ok then
+                warn('settingsReload', 'Mod Settings reload failed: '..tostring(result))
+            elseif result then
+                local rebound,err=pcall(refresh_input_key)
+                if not rebound then
+                    settings.gather_key=inputKeyName
+                    warn('binding', 'Controller binding could not change: '..tostring(err))
+                end
+            end
         end
     end
     local function stop_poll()
@@ -212,7 +228,7 @@ function M.start(settings, gather, log)
             return false
         end
     end
-    inputKey = {KeyName=FName(settings.gather_key)}
+    refresh_input_key()
     -- Native restart hook is available with Framecore's Blueprint hooks disabled.
     local function hook(path, pre, post)
         local ok, before, after = pcall(RegisterHook, path, pre, post)

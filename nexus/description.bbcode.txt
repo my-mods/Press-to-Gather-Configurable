@@ -1,14 +1,14 @@
 [size=5][b][color=#E8C88A]Press to Gather - Configurable[/color][/b][/size]
 
-Gather nearby harvestable plants and resources when you choose. [b]Hold RB / R1 for 0.6 seconds[/b], or [b]press O[/b] on your keyboard. The gathering distance defaults to [b]20 metres[/b] and can be set from [b]10 to 200 metres in 10-metre steps[/b], using the optional Mod Setting Menu or the settings file.
+Gather nearby harvestable plants and resources when you choose. [b]Hold B on Xbox / Circle on PlayStation for 0.6 seconds[/b] by default, or [b]press O[/b] on your keyboard. The gathering distance defaults to [b]20 metres[/b] and can be set from [b]10 to 200 metres in 10-metre steps[/b], using the optional Mod Setting Menu or the settings file.
 
-This mod builds on [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/381]Toggleable Auto Gather - Press to Gather by Tic0311[/url] with an RB/R1 hold shortcut, an in-game gathering distance setting from 10 to 200 metres, and compatibility fixes for Framecore UE4SS Performance mode. Tic0311 credits [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/205]Auto Gathering by Volitio[/url] as the inspiration for the original mod.
+This mod builds on [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/381]Toggleable Auto Gather - Press to Gather by Tic0311[/url] with a configurable controller hold shortcut, an in-game gathering distance setting from 10 to 200 metres, and compatibility fixes for Framecore UE4SS Performance mode. Tic0311 credits [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/205]Auto Gathering by Volitio[/url] as the inspiration for the original mod.
 
 [size=4][b][color=#E8C88A]Controls and features[/color][/b][/size]
 
 [list]
-[*]Hold RB on Xbox controllers or R1 on PlayStation controllers for 0.6 seconds. Each hold gathers once; release the button to gather again.[/*]
-[*]Select the distance in the optional Mod Settings menu or edit the settings file.[/*]
+[*]Hold your chosen controller button for 0.6 seconds; the default is B on Xbox or Circle on PlayStation. Each hold gathers once; release the button to gather again.[/*]
+[*]Select the controller button and gathering distance in the optional Mod Settings menu or edit the settings file.[/*]
 [*]Targets eligible harvestable resources, not general loose world items or containers. The game still decides whether each resource can be harvested.[/*]
 [/list]
 [size=4][b][color=#E8C88A]Installation[/color][/b][/size]
@@ -18,11 +18,11 @@ This mod builds on [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/381]
 [*][b][color=#A8D5C2]Manual:[/color][/b] Copy the archive's Data/PressToGather folder into ...\steamapps\common\The Blood of Dawnwalker\Dawnwalker\Binaries\Win64\ue4ss\Mods\, preserving the folder structure.
 [/list]
 
-[size=4][b][color=#E8C88A]Change the distance[/color][/b][/size]
+[size=4][b][color=#E8C88A]Configuration[/color][/b][/size]
 
-[url=https://www.nexusmods.com/thebloodofdawnwalker/mods/271]Mod Setting Menu[/url] (1.0.5 or later) is [b]optional[/b]. Gathering works without it, with a [b]20-metre default[/b].
+[url=https://www.nexusmods.com/thebloodofdawnwalker/mods/271]Mod Setting Menu[/url] (1.0.5 or later) is [b]optional[/b]. Gathering works without it, with a [b]20-metre default[/b] and [b]B / Circle held for 0.6 seconds[/b].
 
-[b][color=#A8D5C2]With the menu:[/color][/b] Open [b]Main Menu → Mod Settings → Press to Gather - Configurable → Gather Distance[/b]. Choose a value, select [b]Apply[/b], then [b]load a save[/b]. Restarting the game also applies the saved settings.
+[b][color=#A8D5C2]With the menu:[/color][/b] Open [b]Main Menu → Mod Settings → Press to Gather - Configurable[/b]. Set [b]Gather Distance[/b] and [b]Gather Button[/b], select [b]Apply[/b], then [b]load a save[/b]. Restarting the game also applies the saved settings.
 
 [b][color=#A8D5C2]Without the menu:[/color][/b]
 [list=1]
@@ -30,11 +30,28 @@ This mod builds on [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/381]
 [*][b][color=#A8D5C2]Open this generated file in a text editor:[/color][/b][/*]
 [/list]
 [code]<game>/Dawnwalker/Binaries/Win64/ue4ss/Mods/PressToGather/settings.ini[/code]
-In its existing [b][Settings][/b] section, change [b]GatherRadiusMeters[/b] to a value from [b]10 to 200[/b], in steps of [b]10[/b]. Keep the other entries. The default values are:
+In its existing [b][Settings][/b] section, change [b]GatherRadiusMeters[/b] to a value from [b]10 to 200[/b], in steps of [b]10[/b]. Set [b]GatherButton[/b] using the values below. Keep the other entries. The default values are:
 [code][Settings]
 GatherRadiusMeters = 20
+GatherButton = 0
 debugLogging = 0[/code]
-[b]Save the file and restart the game.[/b] Your saved distance is used with or without the menu.
+[b][color=#A8D5C2]GatherButton values (Xbox / PlayStation):[/color][/b]
+0 = B (default) / Circle
+1 = A / Cross
+2 = X / Square
+3 = Y / Triangle
+4 = LB / L1
+5 = RB / R1
+6 = LT / L2
+7 = RT / R2
+8 = Left stick click / L3
+9 = Right stick click / R3
+10 = D-pad Up
+11 = D-pad Down
+12 = D-pad Left
+13 = D-pad Right
+
+[b]Save the file and restart the game.[/b] Your saved distance and button are used with or without the menu. The controller shortcut reads the physical button; other game actions assigned to it still work.
 
 [b]Logging[/b] is Off by default. Enable it using the menu's final entry or by setting [b]debugLogging = 1[/b] in the same file; [b]0[/b] turns it off. Messages appear in
 [code]Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log[/code]

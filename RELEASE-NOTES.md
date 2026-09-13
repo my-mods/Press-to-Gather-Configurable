@@ -1,3 +1,3 @@
-Hold RB / R1 for 0.6 seconds to gather eligible harvestable resources. Choose a distance from 10 to 200 metres in 10-metre steps in Mod Settings, with a default of 20 metres. Each hold gathers once. Keyboard O remains available as an optional shortcut. A Logging toggle controls detailed troubleshooting output.
+Choose your controller shortcut with the Gather Button setting in Mod Settings. The default is holding B on Xbox or Circle on PlayStation for 0.6 seconds. Fourteen buttons are available, including the face buttons, bumpers, triggers, stick clicks, and D-pad directions.
 
-Fixes both RB and keyboard O being blocked during normal gameplay by an unsupported controller cinematic-state lookup.
+Gather Distance remains configurable from 10 to 200 metres in 10-metre steps, with a 20-metre default. Select Apply, then load a save to use saved changes. The menu remains optional; the same settings can be edited in settings.ini. Keyboard O also gathers, and Logging defaults to Off.

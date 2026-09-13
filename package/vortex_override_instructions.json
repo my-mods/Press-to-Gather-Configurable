@@ -12,7 +12,7 @@
   {
     "type": "attribute",
     "key": "description",
-    "value": "Hold RB / R1 for 0.6 seconds to gather harvestable resources. Configure a 10-200 metre distance in 10-metre steps in Mod Settings; default 20 metres. Optional keyboard O shortcut."
+    "value": "Hold B / Circle for 0.6 seconds by default to gather harvestable resources. Choose the controller button and a 10-200 metre distance in the optional Mod Settings menu; default 20 metres. Optional keyboard O shortcut."
   },
   {
     "type": "attribute",
@@ -26,7 +26,15 @@
       "RELEASE-NOTES.md",
       "SOURCE.json",
       "ue4ss-common.lock.json",
-      "LICENSES/ue4ss-common.txt"
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
     ]
   },
   {
@@ -41,7 +49,15 @@
       "RELEASE-NOTES.md",
       "SOURCE.json",
       "ue4ss-common.lock.json",
-      "LICENSES/ue4ss-common.txt"
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
     ]
   },
   {
@@ -56,7 +72,15 @@
       "RELEASE-NOTES.md",
       "SOURCE.json",
       "ue4ss-common.lock.json",
-      "LICENSES/ue4ss-common.txt"
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
     ]
   },
   {
@@ -71,7 +95,15 @@
       "RELEASE-NOTES.md",
       "SOURCE.json",
       "ue4ss-common.lock.json",
-      "LICENSES/ue4ss-common.txt"
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
     ]
   },
   {
@@ -86,7 +118,15 @@
       "RELEASE-NOTES.md",
       "SOURCE.json",
       "ue4ss-common.lock.json",
-      "LICENSES/ue4ss-common.txt"
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
     ]
   },
   {
@@ -101,7 +141,15 @@
       "RELEASE-NOTES.md",
       "SOURCE.json",
       "ue4ss-common.lock.json",
-      "LICENSES/ue4ss-common.txt"
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
     ]
   },
   {
@@ -116,7 +164,15 @@
       "RELEASE-NOTES.md",
       "SOURCE.json",
       "ue4ss-common.lock.json",
-      "LICENSES/ue4ss-common.txt"
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
     ]
   },
   {
@@ -131,7 +187,199 @@
       "RELEASE-NOTES.md",
       "SOURCE.json",
       "ue4ss-common.lock.json",
-      "LICENSES/ue4ss-common.txt"
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus/description.md",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus/description.bbcode.txt",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus/summary.txt",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus/credits.txt",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus/custom-license.txt",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus/changelog.txt",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus/banner.jpg",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus/thumbnail.jpg",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
     ]
   },
   {
@@ -146,7 +394,199 @@
       "RELEASE-NOTES.md",
       "SOURCE.json",
       "ue4ss-common.lock.json",
-      "LICENSES/ue4ss-common.txt"
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus\\description.md",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus\\description.bbcode.txt",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus\\summary.txt",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus\\credits.txt",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus\\custom-license.txt",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus\\changelog.txt",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus\\banner.jpg",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
+    ]
+  },
+  {
+    "type": "attribute",
+    "source": "nexus\\thumbnail.jpg",
+    "key": "pressToGatherReleaseMaterials",
+    "value": [
+      "mod.manifest",
+      "README.txt",
+      "LICENSE.txt",
+      "CHANGELOG.md",
+      "RELEASE-NOTES.md",
+      "SOURCE.json",
+      "ue4ss-common.lock.json",
+      "LICENSES/ue4ss-common.txt",
+      "nexus/description.md",
+      "nexus/description.bbcode.txt",
+      "nexus/summary.txt",
+      "nexus/credits.txt",
+      "nexus/custom-license.txt",
+      "nexus/changelog.txt",
+      "nexus/banner.jpg",
+      "nexus/thumbnail.jpg"
     ]
   }
 ]

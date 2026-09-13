@@ -3,8 +3,9 @@ return {
     -- Allowed distance: 10-200 metres in steps of 10.
     GatherRadiusMeters = 20,
 
-    -- Native Unreal button name: RB on Xbox, R1 on PlayStation.
-    GatherKey = "Gamepad_RightShoulder",
+    -- First-run controller default: B on Xbox, Circle on PlayStation.
+    -- Use Mod Settings > Gather Button or settings.ini thereafter.
+    GatherKey = "Gamepad_FaceButton_Right",
     GatherHoldSeconds = 0.6,
 
     -- Optional keyboard shortcut. Set to false to disable it.

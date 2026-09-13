@@ -1,59 +1,80 @@
 # Press to Gather - Configurable
 
-Gather nearby harvestable resources by holding **RB / R1 for 0.6 seconds**. Choose a distance from **10 to 200 metres, in 10-metre steps**, in Mod Settings; the default is **20 metres**. Short taps do not gather; each hold gathers once, and releasing the button permits another gather. Keyboard **O** also gathers once.
+Gather nearby harvestable plants and resources when you choose. **Hold B on Xbox / Circle on PlayStation for 0.6 seconds** by default, or **press O** on your keyboard. The gathering distance defaults to **20 metres** and can be set from **10 to 200 metres in 10-metre steps**, using the optional Mod Setting Menu or the settings file.
 
-This personal customization is based on [Toggleable Auto Gather - Press to Gather by **Tic0311**](https://www.nexusmods.com/thebloodofdawnwalker/mods/381). It retains the original HarvestableComponent eligibility and interaction behavior. General world loot is excluded.
+This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https://www.nexusmods.com/thebloodofdawnwalker/mods/381) with a configurable controller hold shortcut, an in-game gathering distance setting from 10 to 200 metres, and compatibility fixes for Framecore UE4SS Performance mode. Tic0311 credits [Auto Gathering by Volitio](https://www.nexusmods.com/thebloodofdawnwalker/mods/205) as the inspiration for the original mod.
 
-Tic0311 credits [**Auto Gathering by Volitio**](https://www.nexusmods.com/thebloodofdawnwalker/mods/205) as the inspiration for the original mod. The upstream permissions allow credited modifications and redistribution; see `LICENSE.txt` for the restrictions and the separate shared-library license.
+## Dependencies
 
-## Requirements and compatibility
+- [UE4SS for BoD](https://www.nexusmods.com/thebloodofdawnwalker/mods/283), Framecore 2b or later. Supports Performance mode.
+- [Mod Setting Menu](https://www.nexusmods.com/thebloodofdawnwalker/mods/271), version 1.0.5 or later, is optional.
 
-- The Blood of Dawnwalker; reference Steam build 25232147.
-- UE4SS with `ExecuteInGameThreadWithDelay`, `LoopInGameThreadWithDelay`, and `CancelDelayedAction`. The reference is Framecore 2b, based on UE4SS revision 97b7e501c.
-- Dawnwalker Mod Settings 1.0.5 or later for the settings page; reference menu version 1.0.5.1. Gathering can run without the menu.
-- Run only one gathering mod at a time.
+## Installation
 
-Framecore 2b Performance provides the native hooks and EngineTick scheduling used here. Its Blueprint, LoadMap and BeginPlay hooks can remain disabled.
-
-The controller binding reads the physical Unreal key. A remapped game action does not change this binding. Other game actions on the same button can still run. Gathering is blocked while loading, paused, the mouse cursor is shown, or movement input is disabled, including cutscenes that lock movement. After loading or a blocked input, release the button before beginning a new hold.
-
-## Install or update with Vortex
-
-1. Close the game. Back up any advanced changes to `PressToGather/Scripts/config.lua` before updating. The package supplies a complete `config.lua` and does not merge its advanced controls; it does not contain a personal `settings.ini`.
-2. Disable other gathering mods and deploy in Vortex.
-3. Install `Press-to-Gather-Configurable.zip` through Vortex, replacing the existing entry when updating. Select the UE4SS Lua mod type when requested.
-4. Deploy, then restart the game. Hold RB / R1 near harvestable resources, or press O.
-
-The runtime folder is `Dawnwalker/Binaries/Win64/ue4ss/Mods/PressToGather`. The package supplies `enabled.txt`, `mod_settings.ini`, and five Lua files in `Scripts`: `main.lua`, `config.lua`, `ControllerHold.lua`, `SettingsMenu.lua`, and `SettingsStore.lua`.
+- **Vortex:** Install Press-to-Gather-Configurable.zip through Vortex, enable it and deploy.
+- **Manual:** Copy the archive's Data/PressToGather folder into ...\steamapps\common\The Blood of Dawnwalker\Dawnwalker\Binaries\Win64\ue4ss\Mods\, preserving the folder structure.
 
 ## Configuration
 
-Open **Mod Settings → Press to Gather - Configurable → Gather Distance**. Select **10–200 m** in **10 m** steps, choose **Apply**, then **load a save** to use the new distance. Restarting the game also applies saved values. The final entry, **Logging**, enables detailed troubleshooting and is Off by default.
+[Mod Setting Menu](https://www.nexusmods.com/thebloodofdawnwalker/mods/271) (1.0.5 or later) is **optional**. Gathering works without it, with a **20-metre default** and **B / Circle held for 0.6 seconds**.
 
-The mod creates `PressToGather/settings.ini` on its first launch. Distance and Logging are read from this file at startup and when save loading completes. Changes made in the menu wait for one of those events; no settings file is polled during gameplay.
+**With the menu:** Open **Main Menu → Mod Settings → Press to Gather - Configurable**. Set **Gather Distance** and **Gather Button**, select **Apply**, then **load a save**. Restarting the game also applies the saved settings.
 
-The package's `PressToGather/Scripts/config.lua` contains startup defaults and advanced controls:
+**Without the menu:**
 
-| Setting | Default | Meaning |
+1. Launch the game once with the mod enabled, then close it.
+2. Open this generated file in a text editor:
+
+```text
+<game>/Dawnwalker/Binaries/Win64/ue4ss/Mods/PressToGather/settings.ini
+```
+
+In its existing **[Settings]** section, change **GatherRadiusMeters** to a value from **10 to 200**, in steps of **10**. Set **GatherButton** using the table below. Keep the other entries. The default values are:
+
+```ini
+[Settings]
+GatherRadiusMeters = 20
+GatherButton = 0
+debugLogging = 0
+```
+
+| Value | Xbox button | PlayStation button |
 | --- | --- | --- |
-| `GatherRadiusMeters` | `20` | First-run distance, clamped to 10–200 and rounded to the nearest 10. Saved menu preferences take precedence afterward. |
-| `GatherKey` | `"Gamepad_RightShoulder"` | Native Unreal controller key; RB / R1. |
-| `GatherHoldSeconds` | `0.6` | Hold duration, clamped to 0.2–5 seconds. |
-| `KeyboardGatherKey` | `"O"` | UE4SS keyboard key; `false` disables the shortcut. |
-| `debugLogging` | `false` | First-run Logging default. Saved menu preferences take precedence afterward. |
+| `0` | B (default) | Circle |
+| `1` | A | Cross |
+| `2` | X | Square |
+| `3` | Y | Triangle |
+| `4` | LB | L1 |
+| `5` | RB | R1 |
+| `6` | LT | L2 |
+| `7` | RT | R2 |
+| `8` | Left stick click | L3 |
+| `9` | Right stick click | R3 |
+| `10` | D-pad Up | D-pad Up |
+| `11` | D-pad Down | D-pad Down |
+| `12` | D-pad Left | D-pad Left |
+| `13` | D-pad Right | D-pad Right |
 
-Apply advanced control changes through your Vortex-managed files, then restart the game. If the menu is unavailable, distance and Logging can be edited in the generated `settings.ini` before restarting. Detailed logs are written to `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`, prefixed with `[PressToGather]`. Player readiness, the first detected controller press/hold, the first gather result, and actionable errors are reported once even with Logging Off. If discovery has stopped, keyboard O retries it; press O again once the player is ready.
+**Save the file and restart the game.** Your saved distance and button are used with or without the menu. The controller shortcut reads the physical button; other game actions assigned to it still work.
 
-## Uninstall
+**Logging** is Off by default. Enable it using the menu's final entry or by setting **debugLogging = 1** in the same file; **0** turns it off. Messages appear in `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`.
 
-Disable or remove the entry in Vortex and deploy. Restart the game.
+The package's `PressToGather/Scripts/config.lua` also provides first-run defaults. Saved settings take precedence for distance, button, and Logging. `GatherKey` accepts the native Unreal names listed in `src/ControllerBindings.lua`. `GatherHoldSeconds` defaults to `0.6`; `KeyboardGatherKey` defaults to `"O"` and can be set to `false`. Restart the game after changing these advanced controls.
 
-## Source
+## Credits and source
 
-`src` contains the runtime Lua and configuration. `upstream` retains the original scripts; `SOURCE.json` records their hashes and origin. `package` contains metadata and documentation. The ZIP keeps runtime files under `Data/PressToGather` and release metadata at its root, with explicit Vortex instructions that prevent documentation from deploying into the game.
+- **Tic0311** — original [Toggleable Auto Gather - Press to Gather](https://www.nexusmods.com/thebloodofdawnwalker/mods/381) and its gathering logic. Modified and redistributed under the author's credited-use permissions.
+- **Volitio** — [Auto Gathering](https://www.nexusmods.com/thebloodofdawnwalker/mods/205), credited by Tic0311 as the inspiration for the original mod.
+- **mmarcussa** — the separate Mod Setting Menu framework. **Framecore and the UE4SS contributors** — the separate scripting runtime.
 
-To recreate the archive, place all five `src/*.lua` files in `Data/PressToGather/Scripts`. Place `src/mod_settings.ini` and `package/enabled.txt` in `Data/PressToGather`. Put `package/mod.manifest`, `package/README.txt`, `package/vortex_override_instructions.json`, `LICENSE.txt`, `CHANGELOG.md`, `RELEASE-NOTES.md`, `SOURCE.json`, and `ue4ss-common.lock.json` at the archive root, retaining the `LICENSES/ue4ss-common.txt` path. ZIP those contents as `Press-to-Gather-Configurable.zip`. Do not include the enclosing build folder, upstream snapshots, or a personal `settings.ini`.
+[Source repository and development history](https://github.com/my-mods/Press-to-Gather-Configurable)
 
-The license for `SettingsStore.lua` is included in `LICENSES/ue4ss-common.txt`. Its source commit and file hashes are pinned in `ue4ss-common.lock.json`.
+Original rights remain with their authors. See `LICENSE.txt`; the bundled SettingsStore module has its separate MIT notice in `LICENSES/ue4ss-common.txt` and an exact dependency pin in `ue4ss-common.lock.json`.
 
-Upstream rights remain with their author. See `LICENSE.txt`.
+## Recreate the archive
+
+Place all six `src/*.lua` files in `Data/PressToGather/Scripts`. Place `src/mod_settings.ini` and `package/enabled.txt` in `Data/PressToGather`. Put `package/mod.manifest`, `package/README.txt`, `package/vortex_override_instructions.json`, `LICENSE.txt`, `CHANGELOG.md`, `RELEASE-NOTES.md`, `SOURCE.json`, and `ue4ss-common.lock.json` at the archive root, retaining `LICENSES/ue4ss-common.txt`.
+
+Include these release materials under `nexus/`: `description.md`, `description.bbcode.txt`, `summary.txt`, `credits.txt`, `custom-license.txt`, `changelog.txt`, `banner.jpg`, and `thumbnail.jpg`. The Vortex metadata keeps release materials out of the game directory. ZIP these contents as `Press-to-Gather-Configurable.zip`, without the enclosing folder, upstream snapshots, or personal `settings.ini`.
+
+`upstream` retains the original scripts and `SOURCE.json` records their provenance and hashes.
