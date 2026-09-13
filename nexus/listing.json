@@ -13,13 +13,13 @@
     "AI Media",
     "AI-Generated Content"
   ],
-  "summary": "Hold B / Circle to gather nearby harvestable resources, or press O. Choose your controller button and a 10–200 m distance in the optional Mod Settings menu. Defaults: 0.6-second hold and 20 m. Supports Framecore UE4SS Performance mode.",
+  "summary": "Hold B / Circle to gather nearby harvestable resources, or press O. Choose your controller button and a 10–200 m distance in the Mod Settings. Defaults: 0.6-second hold and 20 m. Supports Framecore UE4SS Performance mode.",
   "file": {
     "name": "Press to Gather - Configurable",
     "archive_filename": "Press-to-Gather-Configurable.zip",
     "version": "1.1",
     "category": "main",
-    "description": "Choose your gathering button in Mod Settings. Default: hold B / Circle for 0.6 seconds. Set the distance from 10 to 200 m in 10 m steps; default 20 m. The menu is optional, and keyboard O also gathers.",
+    "description": "Choose your gathering button in Mod Settings. Default: hold B / Circle for 0.6 seconds. Set the distance from 10 to 200 m in 10 m steps; default 20 m. Saved settings apply during play; keyboard O also gathers.",
     "sha256": "4348ace808ed77c08b3a8c29746a75b4049780792c14c5a67ae4feed04f077f9"
   },
   "required": [
@@ -36,14 +36,21 @@
           "version": "1.3 or later"
         }
       ]
-    }
-  ],
-  "optional": [
+    },
     {
       "name": "Mod Setting Menu",
       "url": "https://www.nexusmods.com/thebloodofdawnwalker/mods/271",
-      "version": "1.0.5 or later"
+      "version": "1.0.6 or later",
+      "minimumVersion": "1.0.6",
+      "optional": false,
+      "note": "Required for live Apply. UE4SS HookProcessConsoleExec must be 1."
     }
   ],
-  "artwork_license_scope": "Game imagery and other third-party material retain their owners’ rights and are excluded from mod-code license grants."
+  "optional": [],
+  "artwork_license_scope": "Game imagery and other third-party material retain their owners’ rights and are excluded from mod-code license grants.",
+  "liveSettings": {
+    "minimumMenuVersion": "1.0.6",
+    "HookProcessConsoleExec": 1,
+    "apply": "Committed values update gameplay through bounded workers."
+  }
 }

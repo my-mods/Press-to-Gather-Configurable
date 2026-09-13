@@ -2,3 +2,4 @@
 upstream/* -text
 src/SettingsStore.lua -text
 LICENSES/ue4ss-common.txt -text
+**/dmm_api.lua -text

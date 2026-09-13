@@ -1,13 +1,13 @@
 # Press to Gather - Configurable
 
-Gather nearby harvestable plants and resources when you choose. **Hold B on Xbox / Circle on PlayStation for 0.6 seconds** by default, or **press O** on your keyboard. The gathering distance defaults to **20 metres** and can be set from **10 to 200 metres in 10-metre steps**, using the optional Mod Setting Menu or the settings file.
+Gather nearby harvestable plants and resources when you choose. **Hold B on Xbox / Circle on PlayStation for 0.6 seconds** by default, or **press O** on your keyboard. The gathering distance defaults to **20 metres** and can be set from **10 to 200 metres in 10-metre steps**, using Mod Setting Menu or the settings file.
 
 This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https://www.nexusmods.com/thebloodofdawnwalker/mods/381) with a configurable controller hold shortcut, an in-game gathering distance setting from 10 to 200 metres, and compatibility fixes for Framecore UE4SS Performance mode. Tic0311 credits [Auto Gathering by Volitio](https://www.nexusmods.com/thebloodofdawnwalker/mods/205) as the inspiration for the original mod.
 
 ## Dependencies
 
 - [UE4SS for BoD](https://www.nexusmods.com/thebloodofdawnwalker/mods/283) 2b or later, or [UE4SS for Dawnwalker](https://www.nexusmods.com/thebloodofdawnwalker/mods/18) 1.3 or later.
-- [Mod Setting Menu](https://www.nexusmods.com/thebloodofdawnwalker/mods/271), version 1.0.5 or later, is optional.
+- Required: [Mod Setting Menu 1.0.6 or later](https://www.nexusmods.com/thebloodofdawnwalker/mods/271).
 
 ## Installation
 
@@ -16,11 +16,19 @@ This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https:/
 
 ## Configuration
 
-[Mod Setting Menu](https://www.nexusmods.com/thebloodofdawnwalker/mods/271) (1.0.5 or later) is **optional**. Gathering works without it, with a **20-metre default** and **B / Circle held for 0.6 seconds**.
+Mod Setting Menu 1.0.6 or later is required. Its callback bridge also requires `HookProcessConsoleExec = 1` in `UE4SS-settings.ini`. Manage that loader setting through your Vortex loader configuration; this archive contains no replacement global UE4SS INI.
 
-**With the menu:** Open **Main Menu → Mod Settings → Press to Gather - Configurable**. Set **Gather Distance** and **Gather Button**, select **Apply**, then **load a save**. Restarting the game also applies the saved settings.
+Settings are prepared when the game starts and are available from the main menu before the first save. Press **Apply** to save and update the active game. Changes made while loading are retained for the next valid player. Restore and Discard leave saved settings unchanged; Reset takes effect after Apply.
 
-**Without the menu:**
+Distance and Logging update immediately. Changing Gather Button rebuilds its cached key once, clears the current hold, and requires release before gathering again. A gather already in progress finishes with the distance captured when it began.
+
+Logging is the final, sole diagnostic control. It changes immediately; verbose logging is Off by default. Logs are written to `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`. Settings are never polled.
+
+Required: [Mod Setting Menu 1.0.6 or later](https://www.nexusmods.com/thebloodofdawnwalker/mods/271). Open Mod Settings and press Apply to save and update gameplay.
+
+**With the menu:** Open **Main Menu → Mod Settings → Press to Gather - Configurable**. Set **Gather Distance** and **Gather Button**, select **Apply** to save and update the active game. Restarting the game also applies the saved settings.
+
+**Editing the settings file:**
 
 1. Launch the game once with the mod enabled, then close it.
 2. Open this generated file in a text editor:
@@ -55,7 +63,7 @@ debugLogging = 0
 | `12` | D-pad Left | D-pad Left |
 | `13` | D-pad Right | D-pad Right |
 
-**Save the file and restart the game.** Your saved distance and button are used with or without the menu. The controller shortcut reads the physical button; other game actions assigned to it still work.
+**Save the file and restart the game.** Your saved distance and button are also read at startup. The controller shortcut reads the physical button; other game actions assigned to it still work.
 
 **Logging** is Off by default. Enable it using the menu's final entry or by setting **debugLogging = 1** in the same file; **0** turns it off. Messages appear in `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`.
 

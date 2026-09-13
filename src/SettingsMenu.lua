@@ -1,4 +1,4 @@
--- Menu preferences are loaded at startup and on completed save loading only.
+-- Read preferences at configuration boundaries; menu Apply supplies saved values.
 -- Storage is the pinned MIT SettingsStore from ue4ss-common.
 local M = {}
 local Store = require('SettingsStore')
@@ -51,10 +51,15 @@ function M.bind(directory, settings, log)
         local debugLogging=values.debugLogging==1
         local gatherKey=Bindings.key(values.GatherButton)
         local changed=settings.radius_uu~=radius or settings.debugLogging~=debugLogging or settings.gather_key~=gatherKey
+        if settings.gather_key~=gatherKey and settings.changeBinding then settings.changeBinding(gatherKey) end
         settings.radius_uu,settings.debugLogging,settings.gather_key=radius,debugLogging,gatherKey
         lastError=nil
-        if changed then log(string.format('Mod Settings applied: distance %dm, button %s, Logging %s.',values.GatherRadiusMeters,gatherKey,debugLogging and 'On' or 'Off')) end
+        if changed and debugLogging then log(string.format('Mod Settings applied: distance %dm, button %s, Logging %s.',values.GatherRadiusMeters,gatherKey,debugLogging and 'On' or 'Off')) end
     end
+    local live=require('UE4SSDawnwalkerSettings').new({modId='PressToGather',schema=schema,
+        ids={GatherRadiusMeters='GatherRadiusMeters',GatherButton='GatherButton',debugLogging='debugLogging'},report=log})
+    settings.live=live
+    live.attach(apply)
     local values,err=Store.load(directory,schema,function()
         -- Import initial defaults only. Never supply legacy files for deletion.
         return {GatherRadiusMeters=settings.radius_uu/100,GatherButton=initialButton,debugLogging=settings.debugLogging and 1 or 0}
@@ -72,15 +77,16 @@ function M.bind(directory, settings, log)
             end
         else err=readError end
     end
-    if values then apply(values) else report(err) end
+    if values then live.seed(values);apply(values) else report(err) end
     settings.reload=function()
         local text,readError=Store.read(path)
         if not text then report(readError);return false end
         local saved,parseError=parse(text)
         if not saved then report(parseError);return false end
-        apply(saved)
+        live.seed(saved);apply(saved)
         return true
     end
+    live.start(function(id,callback) return require('dmm_api').subscribe(id,callback) end)
 end
 
 return M

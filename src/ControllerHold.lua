@@ -30,14 +30,16 @@ function M.start(settings, gather, log)
     local function reset_hold()
         holdStart, armed, fired = nil, false, false
     end
-    local function refresh_input_key()
-        if inputKeyName==settings.gather_key then return end
+    local function refresh_input_key(requestedKey)
+        requestedKey=requestedKey or settings.gather_key
+        if inputKeyName==requestedKey then return end
         -- Cache the structured FKey once per binding change, outside polling.
-        local nextKey={KeyName=FName(settings.gather_key)}
-        inputKey,inputKeyName=nextKey,settings.gather_key
+        local nextKey={KeyName=FName(requestedKey)}
+        inputKey,inputKeyName=nextKey,requestedKey
         reset_hold()
         firstDown,firstHold=true,true
     end
+    settings.changeBinding=refresh_input_key
     local function reload_settings()
         if loading or not reloadRequested then return end
         reloadRequested=false

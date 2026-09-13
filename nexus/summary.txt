@@ -1,1 +1,1 @@
-Hold B / Circle to gather nearby harvestable resources, or press O. Choose your controller button and a 10–200 m distance in the optional Mod Settings menu. Defaults: 0.6-second hold and 20 m. Supports Framecore UE4SS Performance mode.
+Hold B / Circle to gather nearby harvestable resources, or press O. Choose your controller button and a 10–200 m distance in Mod Settings. Defaults: 0.6-second hold and 20 m. Supports Framecore UE4SS Performance mode.

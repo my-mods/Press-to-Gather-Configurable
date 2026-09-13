@@ -1,13 +1,13 @@
 # Press to Gather - Configurable
 
-Gather nearby harvestable plants and resources when you choose. **Hold B on Xbox / Circle on PlayStation for 0.6 seconds** by default, or **press O** on your keyboard. The gathering distance defaults to **20 metres** and can be set from **10 to 200 metres in 10-metre steps**, using the optional Mod Setting Menu or the settings file.
+Gather nearby harvestable plants and resources when you choose. **Hold B on Xbox / Circle on PlayStation for 0.6 seconds** by default, or **press O** on your keyboard. The gathering distance defaults to **20 metres** and can be set from **10 to 200 metres in 10-metre steps**, using Mod Setting Menu or the settings file.
 
 This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https://www.nexusmods.com/thebloodofdawnwalker/mods/381) with a configurable controller hold shortcut, an in-game gathering distance setting from 10 to 200 metres, and compatibility fixes for Framecore UE4SS Performance mode. Tic0311 credits [Auto Gathering by Volitio](https://www.nexusmods.com/thebloodofdawnwalker/mods/205) as the inspiration for the original mod.
 
 ## Controls and features
 
 - Hold your chosen controller button for 0.6 seconds; the default is B on Xbox or Circle on PlayStation. Each hold gathers once; release the button to gather again.
-- Choose from **14 controller buttons** and select the gathering distance in the optional Mod Settings menu or edit the settings file.
+- Choose from **14 controller buttons** and select the gathering distance in Mod Settings or edit the settings file.
 - Targets eligible harvestable resources, not general loose world items or containers.
 
 ## Installation
@@ -17,11 +17,11 @@ This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https:/
 
 ## Configuration
 
-[Mod Setting Menu](https://www.nexusmods.com/thebloodofdawnwalker/mods/271) (1.0.5 or later) is **optional**. Gathering works without it, with a **20-metre default** and **B / Circle held for 0.6 seconds**.
+Required: [Mod Setting Menu 1.0.6 or later](https://www.nexusmods.com/thebloodofdawnwalker/mods/271). Open Mod Settings and press Apply to save and update gameplay.
 
-**With the menu:** Open **Main Menu → Mod Settings → Press to Gather - Configurable**. Set **Gather Distance** and **Gather Button**, select **Apply**, then **load a save**. Restarting the game also applies the saved settings.
+**With the menu:** Open **Main Menu → Mod Settings → Press to Gather - Configurable**. Set **Gather Distance** and **Gather Button**, select **Apply** to save and update the active game. Restarting the game also applies the saved settings.
 
-**Without the menu:**
+**Editing the settings file:**
 
 1. Launch the game once with the mod enabled, then close it.
 2. Open this generated file in a text editor:
@@ -71,3 +71,10 @@ debugLogging = 0
 ## Permissions
 
 Credit Tic0311, Volitio and this edition's contributors when sharing or modifying the mod. The original author's permissions allow credited redistribution, modifications, conversions, and asset use. Works using the original assets may not be sold. Donation Points require the original author's separate permission; this listing is not enrolled. The MIT License applies only to the bundled common-library module, not the entire mod. Game imagery retains its owners' rights and is excluded from the mod-code reuse grants.
+
+
+## Live settings
+
+Mod Setting Menu 1.0.6 or later is required. Its callback bridge also requires `HookProcessConsoleExec = 1` in `UE4SS-settings.ini`. Manage that loader setting through your Vortex loader configuration; this archive contains no replacement global UE4SS INI.
+
+Settings are prepared when the game starts and are available from the main menu before the first save. Press **Apply** to save and update the active game. Changes made while loading are retained for the next valid player. Restore and Discard leave saved settings unchanged; Reset takes effect after Apply.
