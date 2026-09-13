@@ -1,10 +1,10 @@
 # Changes
 
-## Unreleased
+## Version 1.1
 
-- Add a Gather Button selector with 14 controller buttons in Mod Settings.
-- Change the default shortcut to holding B / Circle for 0.6 seconds.
-- Apply saved button changes when loading a save or restarting the game.
+- Added a Gather Button setting with 14 controller buttons to choose from.
+- Changed the default shortcut to holding B (Xbox) / Circle (PlayStation) for 0.6 seconds.
+- Mod Setting Menu is optional; the same settings can be changed in settings.ini.
 
 ## Version 1.0
 

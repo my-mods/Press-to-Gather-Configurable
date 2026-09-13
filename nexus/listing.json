@@ -1,7 +1,7 @@
 {
   "url": "https://www.nexusmods.com/thebloodofdawnwalker/mods/449",
   "title": "Press to Gather - Configurable",
-  "version": "1.0",
+  "version": "1.1",
   "game": "The Blood of Dawnwalker",
   "author": "Tic0311 and CamilleBC",
   "category": "Gameplay",
@@ -10,22 +10,32 @@
     "Gameplay",
     "Quality of Life",
     "AI Assisted",
-    "AI Media"
+    "AI Media",
+    "AI-Generated Content"
   ],
   "summary": "Hold B / Circle to gather nearby harvestable resources, or press O. Choose your controller button and a 10–200 m distance in the optional Mod Settings menu. Defaults: 0.6-second hold and 20 m. Supports Framecore UE4SS Performance mode.",
   "file": {
     "name": "Press to Gather - Configurable",
     "archive_filename": "Press-to-Gather-Configurable.zip",
-    "version": "1.0",
+    "version": "1.1",
     "category": "main",
-    "description": "Choose your gather button in the optional Mod Settings menu. Hold B / Circle for 0.6 seconds by default, or press O. Default distance 20 m; configure 10–200 m in 10 m steps using the menu or settings.ini. Supports Framecore UE4SS Performance mode.",
-    "sha256": "66a0abb654de2cca0a402cc39db199821eeeffb58d1f5d4abe7c3fc5b87d8fe5"
+    "description": "Choose your gathering button in Mod Settings. Default: hold B / Circle for 0.6 seconds. Set the distance from 10 to 200 m in 10 m steps; default 20 m. The menu is optional, and keyboard O also gathers.",
+    "sha256": "4348ace808ed77c08b3a8c29746a75b4049780792c14c5a67ae4feed04f077f9"
   },
   "required": [
     {
-      "name": "UE4SS for BoD",
-      "url": "https://www.nexusmods.com/thebloodofdawnwalker/mods/283",
-      "version": "2b or later"
+      "alternatives": [
+        {
+          "name": "UE4SS for BoD",
+          "url": "https://www.nexusmods.com/thebloodofdawnwalker/mods/283",
+          "version": "2b or later"
+        },
+        {
+          "name": "UE4SS for Dawnwalker",
+          "url": "https://www.nexusmods.com/thebloodofdawnwalker/mods/18",
+          "version": "1.3 or later"
+        }
+      ]
     }
   ],
   "optional": [

@@ -6,7 +6,7 @@ This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https:/
 
 ## Dependencies
 
-- [UE4SS for BoD](https://www.nexusmods.com/thebloodofdawnwalker/mods/283), Framecore 2b or later. Supports Performance mode.
+- [UE4SS for BoD](https://www.nexusmods.com/thebloodofdawnwalker/mods/283) 2b or later, or [UE4SS for Dawnwalker](https://www.nexusmods.com/thebloodofdawnwalker/mods/18) 1.3 or later.
 - [Mod Setting Menu](https://www.nexusmods.com/thebloodofdawnwalker/mods/271), version 1.0.5 or later, is optional.
 
 ## Installation
@@ -59,8 +59,6 @@ debugLogging = 0
 
 **Logging** is Off by default. Enable it using the menu's final entry or by setting **debugLogging = 1** in the same file; **0** turns it off. Messages appear in `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`.
 
-The package's `PressToGather/Scripts/config.lua` also provides first-run defaults. Saved settings take precedence for distance, button, and Logging. `GatherKey` accepts the native Unreal names listed in `src/ControllerBindings.lua`. `GatherHoldSeconds` defaults to `0.6`; `KeyboardGatherKey` defaults to `"O"` and can be set to `false`. Restart the game after changing these advanced controls.
-
 ## Credits and source
 
 - **Tic0311** — original [Toggleable Auto Gather - Press to Gather](https://www.nexusmods.com/thebloodofdawnwalker/mods/381) and its gathering logic. Modified and redistributed under the author's credited-use permissions.
@@ -69,12 +67,4 @@ The package's `PressToGather/Scripts/config.lua` also provides first-run default
 
 [Source repository and development history](https://github.com/my-mods/Press-to-Gather-Configurable)
 
-Original rights remain with their authors. See `LICENSE.txt`; the bundled SettingsStore module has its separate MIT notice in `LICENSES/ue4ss-common.txt` and an exact dependency pin in `ue4ss-common.lock.json`.
-
-## Recreate the archive
-
-Place all six `src/*.lua` files in `Data/PressToGather/Scripts`. Place `src/mod_settings.ini` and `package/enabled.txt` in `Data/PressToGather`. Put `package/mod.manifest`, `package/README.txt`, `package/vortex_override_instructions.json`, `LICENSE.txt`, `CHANGELOG.md`, `RELEASE-NOTES.md`, `SOURCE.json`, and `ue4ss-common.lock.json` at the archive root, retaining `LICENSES/ue4ss-common.txt`.
-
-Include these release materials under `nexus/`: `description.md`, `description.bbcode.txt`, `summary.txt`, `credits.txt`, `custom-license.txt`, `changelog.txt`, `banner.jpg`, and `thumbnail.jpg`. The Vortex metadata keeps release materials out of the game directory. ZIP these contents as `Press-to-Gather-Configurable.zip`, without the enclosing folder, upstream snapshots, or personal `settings.ini`.
-
-`upstream` retains the original scripts and `SOURCE.json` records their provenance and hashes.
+See `LICENSE.txt` for reuse terms and the included license notices.

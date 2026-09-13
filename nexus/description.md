@@ -7,8 +7,8 @@ This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https:/
 ## Controls and features
 
 - Hold your chosen controller button for 0.6 seconds; the default is B on Xbox or Circle on PlayStation. Each hold gathers once; release the button to gather again.
-- Select the controller button and gathering distance in the optional Mod Settings menu or edit the settings file.
-- Targets eligible harvestable resources, not general loose world items or containers. The game still decides whether each resource can be harvested.
+- Choose from **14 controller buttons** and select the gathering distance in the optional Mod Settings menu or edit the settings file.
+- Targets eligible harvestable resources, not general loose world items or containers.
 
 ## Installation
 
@@ -70,4 +70,4 @@ debugLogging = 0
 
 ## Permissions
 
-Credit Tic0311 and this edition's contributors when sharing or modifying the mod. The original author's permissions allow credited redistribution, modifications, conversions, and asset use. Works using the original assets may not be sold. Donation Points require the original author's separate permission; this listing is not enrolled. The MIT License applies only to the bundled common-library module, not the entire mod. Game imagery retains its owners' rights and is excluded from the mod-code reuse grants.
+Credit Tic0311, Volitio and this edition's contributors when sharing or modifying the mod. The original author's permissions allow credited redistribution, modifications, conversions, and asset use. Works using the original assets may not be sold. Donation Points require the original author's separate permission; this listing is not enrolled. The MIT License applies only to the bundled common-library module, not the entire mod. Game imagery retains its owners' rights and is excluded from the mod-code reuse grants.
