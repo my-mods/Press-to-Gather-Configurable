@@ -1,44 +1,41 @@
 [size=5][b][color=#E8C88A]Press to Gather - Configurable[/color][/b][/size]
 
-Gather nearby harvestable plants and resources when you choose. [b]Hold B on Xbox / Circle on PlayStation for 0.6 seconds[/b] by default, or [b]press O[/b] on your keyboard. The gathering distance defaults to [b]20 metres[/b] and can be set from [b]10 to 200 metres in 10-metre steps[/b], using Mod Setting Menu or the settings file.
+Gather nearby harvestable plants and resources when you choose. [b]Hold B on Xbox / Circle on PlayStation for 0.6 seconds[/b] by default, or [b]press O[/b] on your keyboard. The gathering distance defaults to [b]20 metres[/b] and can be set from [b]10 to 200 metres in 10-metre steps[/b], using the Mod Setting Menu or the settings file.
 
 This mod builds on [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/381]Toggleable Auto Gather - Press to Gather by Tic0311[/url] with a configurable controller hold shortcut, an in-game gathering distance setting from 10 to 200 metres, and compatibility fixes for Framecore UE4SS Performance mode. Tic0311 credits [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/205]Auto Gathering by Volitio[/url] as the inspiration for the original mod.
 
 [size=4][b][color=#E8C88A]Controls and features[/color][/b][/size]
 
 [list]
-[*]Hold your chosen controller button for 0.6 seconds; the default is [b]B / Circle[/b]. Release the button to gather again.[/*]
-[*]Choose from [b]14 controller buttons[/b] and select the gathering distance in the optional [b]Mod Settings[/b] menu or edit the settings file.[/*]
-[*]Targets eligible [b]harvestable [/b]resources, not general loose world items or containers.[/*]
+[*]Hold your chosen controller button for 0.6 seconds; the default is [b]B / Circle[/b]. Release the button to gather again.
+[*]Choose from [b]14 controller buttons[/b] and select the gathering distance in the [b]Mod Settings[/b] menu or edit the settings file.
+[*]Targets eligible [b]harvestable [/b]resources, not general loose world items or containers.
 [/list]
-
 [size=4][b][color=#E8C88A]Installation[/color][/b][/size]
 
 [list]
-[*][b][color=#A8D5C2]Vortex:[/color][/b] Install Press-to-Gather-Configurable.zip through Vortex, enable it and deploy.[/*]
-[*][b][color=#A8D5C2]Manual:[/color][/b] Copy the archive's Data/PressToGather folder into ...\steamapps\common\The Blood of Dawnwalker\Dawnwalker\Binaries\Win64\ue4ss\Mods\, preserving the folder structure.[/*]
+[*][b][color=#A8D5C2]Vortex:[/color][/b] Install Press-to-Gather-Configurable.zip through Vortex, enable it and deploy.
+[*][b][color=#A8D5C2]Manual:[/color][/b] Copy the archive's Data/PressToGather folder into ...\steamapps\common\The Blood of Dawnwalker\Dawnwalker\Binaries\Win64\ue4ss\Mods\, preserving the folder structure.
 [/list]
-
 [size=4][b][color=#E8C88A]Configuration[/color][/b][/size]
 
-Required: [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/271]Mod Setting Menu 1.0.6 or later[/url]. Open Mod Settings and press Apply to save and update gameplay.
+Mod Setting Menu 1.0.6+ is required. Apply saves changes and updates gameplay. Enable HookProcessConsoleExec = 1 in your Vortex-managed UE4SS configuration.
 
-[b][color=#A8D5C2]With the menu:[/color][/b] Open [b]Main Menu → Mod Settings → Press to Gather - Configurable[/b]. Set [b]Gather Distance[/b] and [b]Gather Button[/b], select [b]Apply[/b], then [b]load a save[/b]. Restarting the game also applies the saved settings.
+[url=https://www.nexusmods.com/thebloodofdawnwalker/mods/271]Mod Setting Menu 1.0.6 or later[/url] is required. Defaults are [b]20 metres[/b] and [b]B / Circle held for 0.6 seconds[/b].
 
-[b][color=#A8D5C2]Without the menu:[/color][/b]
+[b][color=#A8D5C2]With the menu:[/color][/b] Open [b]Main Menu → Mod Settings → Press to Gather - Configurable[/b]. Set [b]Gather Distance[/b] and [b]Gather Button[/b], select [b]Apply[/b] to update gameplay. Restarting the game also applies the saved settings.
+
+[b][color=#A8D5C2]Manual file editing:[/color][/b]
 [list=1]
-[*]Launch the game once with the mod enabled, then close it.[/*]
-[*][b][color=#A8D5C2]Open this generated file in a text editor:[/color][/b][/*]
+[*]Launch the game once with the mod enabled, then close it.
+[*][b][color=#A8D5C2]Open this generated file in a text editor:[/color][/b]
 [/list]
-
 [code]<game>/Dawnwalker/Binaries/Win64/ue4ss/Mods/PressToGather/settings.ini[/code]
-
 In its existing [b][Settings][/b] section, change [b]GatherRadiusMeters[/b] to a value from [b]10 to 200[/b], in steps of [b]10[/b]. Set [b]GatherButton[/b] using the values below. Keep the other entries. The default values are:
 [code][Settings]
 GatherRadiusMeters = 20
 GatherButton = 0
 debugLogging = 0[/code]
-
 [b][color=#A8D5C2]GatherButton values (Xbox / PlayStation):[/color][/b]
 [code]0 = B (default) / Circle
 1 = A / Cross
@@ -54,7 +51,6 @@ debugLogging = 0[/code]
 11 = D-pad Down
 12 = D-pad Left
 13 = D-pad Right[/code]
-
 [b]Save the file and restart the game.[/b] Your saved distance and button are used with or without the menu. Other game actions assigned to the chosen button still work.
 
 [b]Logging[/b] is Off by default. Enable it using the menu's final entry or by setting [b]debugLogging = 1[/b] in the same file; [b]0[/b] turns it off. Messages appear in
@@ -63,18 +59,12 @@ debugLogging = 0[/code]
 [size=4][b][color=#E8C88A]Credits and source[/color][/b][/size]
 
 [list]
-[*][b][color=#A8D5C2]Tic0311[/color][/b] — original [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/381]Toggleable Auto Gather - Press to Gather[/url] and its gathering logic. Modified and redistributed under the author's credited-use permissions.[/*]
-[*][b][color=#A8D5C2]Volitio[/color][/b] — [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/205]Auto Gathering[/url], credited by Tic0311 as the inspiration for the original mod.[/*]
-[*][b][color=#A8D5C2]mmarcussa[/color][/b] — the separate Mod Setting Menu framework. [b]Framecore and the UE4SS contributors[/b] — the separate scripting runtime.[/*]
+[*][b][color=#A8D5C2]Tic0311[/color][/b] — original [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/381]Toggleable Auto Gather - Press to Gather[/url] and its gathering logic. Modified and redistributed under the author's credited-use permissions.
+[*][b][color=#A8D5C2]Volitio[/color][/b] — [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/205]Auto Gathering[/url], credited by Tic0311 as the inspiration for the original mod.
+[*][b][color=#A8D5C2]mmarcussa[/color][/b] — the separate Mod Setting Menu framework. [b]Framecore and the UE4SS contributors[/b] — the separate scripting runtime.
 [/list]
-
 [url=https://github.com/my-mods/Press-to-Gather-Configurable]Source repository and development history[/url]
 
 [size=4][b][color=#E8C88A]Permissions[/color][/b][/size]
 
 Credit Tic0311, Volitio and this edition's contributors when sharing or modifying the mod. The original author's permissions allow credited redistribution, modifications, conversions, and asset use. Works using the original assets may not be sold. Donation Points require the original author's separate permission; this listing is not enrolled. The MIT License applies only to the bundled common-library module, not the entire mod. Game imagery retains its owners' rights and is excluded from the mod-code reuse grants.
-
-
-[b]Live settings[/b]
-Mod Setting Menu 1.0.6+ is required. Settings are prepared at startup; Apply saves changes and updates gameplay. The loader must use HookProcessConsoleExec = 1, managed through your Vortex loader configuration.
-Distance and Logging update immediately. Changing Gather Button rebuilds its cached key once, clears the current hold, and requires release before gathering again. A gather already in progress finishes with the distance captured when it began.

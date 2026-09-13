@@ -1,3 +1,4 @@
-- Added a Gather Button setting with 14 controller buttons to choose from.
-- Changed the default shortcut to holding B (Xbox) / Circle (PlayStation) for 0.6 seconds.
-- Mod Setting Menu is optional; the same settings can be changed in settings.ini.
+# Press to Gather - Configurable 1.2
+
+- Apply gathering distance and controller button changes during play without loading a save.
+- Require release of the newly selected button before starting another gather.

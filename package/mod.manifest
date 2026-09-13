@@ -5,7 +5,7 @@
     <modid>PressToGather</modid>
     <description>Hold B / Circle for 0.6 seconds by default to gather harvestable resources. Choose the controller button and a 10-200 metre distance in the optional Mod Settings menu; default 20 metres. Optional keyboard O shortcut.</description>
     <author>Tic0311; personal controller customization</author>
-    <version>1.1</version>
+    <version>1.2</version>
     <created_on>2026-09-10</created_on>
   </info>
   <supports>

@@ -1,3 +1,8 @@
+## 1.2
+
+- Apply gathering distance and controller button changes during play without loading a save.
+- Require release of the newly selected button before starting another gather.
+
 # Changes
 
 ## Version 1.1

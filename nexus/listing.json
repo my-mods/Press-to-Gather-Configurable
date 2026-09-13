@@ -1,7 +1,7 @@
 {
   "url": "https://www.nexusmods.com/thebloodofdawnwalker/mods/449",
   "title": "Press to Gather - Configurable",
-  "version": "1.1",
+  "version": "1.2",
   "game": "The Blood of Dawnwalker",
   "author": "Tic0311 and CamilleBC",
   "category": "Gameplay",
@@ -9,7 +9,6 @@
   "tags": [
     "Gameplay",
     "Quality of Life",
-    "AI Assisted",
     "AI Media",
     "AI-Generated Content"
   ],
@@ -17,10 +16,9 @@
   "file": {
     "name": "Press to Gather - Configurable",
     "archive_filename": "Press-to-Gather-Configurable.zip",
-    "version": "1.1",
+    "version": "1.2",
     "category": "main",
-    "description": "Choose your gathering button in Mod Settings. Default: hold B / Circle for 0.6 seconds. Set the distance from 10 to 200 m in 10 m steps; default 20 m. Saved settings apply during play; keyboard O also gathers.",
-    "sha256": "4348ace808ed77c08b3a8c29746a75b4049780792c14c5a67ae4feed04f077f9"
+    "description": "Apply gathering distance and controller button changes during play without loading a save. Require release of the newly selected button before starting another gather."
   },
   "required": [
     {
