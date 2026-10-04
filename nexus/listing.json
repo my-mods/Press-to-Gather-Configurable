@@ -1,7 +1,7 @@
 {
   "url": "https://www.nexusmods.com/thebloodofdawnwalker/mods/449",
   "title": "Press to Gather - Configurable",
-  "version": "1.2",
+  "version": "1.3",
   "game": "The Blood of Dawnwalker",
   "author": "Tic0311 and CamilleBC",
   "category": "Gameplay",
@@ -16,9 +16,9 @@
   "file": {
     "name": "Press to Gather - Configurable",
     "archive_filename": "Press-to-Gather-Configurable.zip",
-    "version": "1.2",
+    "version": "1.3",
     "category": "main",
-    "description": "Apply gathering distance and controller button changes during play without loading a save. Require release of the newly selected button before starting another gather."
+    "description": "Added support for more wild plants, including Cave Fungus, Comfrey and Green-Gilled Mushroom. Improved Logging to help diagnose plants that are not gathered."
   },
   "required": [
     {
