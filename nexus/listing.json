@@ -18,7 +18,7 @@
     "archive_filename": "Press-to-Gather-Configurable.zip",
     "version": "1.3",
     "category": "main",
-    "description": "Added support for more wild plants, including Cave Fungus, Comfrey and Green-Gilled Mushroom. Improved Logging to help diagnose plants that are not gathered."
+    "description": "Added support for more wild plants, including Cave Fungus, Comfrey and Green-Gilled Mushroom."
   },
   "required": [
     {
