@@ -9,7 +9,7 @@ This mod builds on [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/381]
 [list]
 [*]Hold your chosen controller button for 0.6 seconds; the default is [b]B / Circle[/b]. Release the button to gather again.
 [*]Choose from [b]14 controller buttons[/b] and select the gathering distance in the [b]Mod Settings[/b] menu or edit the settings file.
-[*]Targets eligible [b]harvestable [/b]resources, not general loose world items or containers.
+[*]Gathers eligible harvestable resources and [b]17 additional wild plant types[/b], including Cave Fungus, Comfrey and Green-Gilled Mushroom. Owned and quest-marked plants are excluded.
 [/list]
 [size=4][b][color=#E8C88A]Installation[/color][/b][/size]
 
@@ -19,9 +19,9 @@ This mod builds on [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/381]
 [/list]
 [size=4][b][color=#E8C88A]Configuration[/color][/b][/size]
 
-Mod Setting Menu 1.0.6+ is required. Apply saves changes and updates gameplay. Enable HookProcessConsoleExec = 1 in your Vortex-managed UE4SS configuration.
+Apply saves changes and updates gameplay. Enable HookProcessConsoleExec = 1 in your Vortex-managed UE4SS configuration.
 
-[url=https://www.nexusmods.com/thebloodofdawnwalker/mods/271]Mod Setting Menu 1.0.6 or later[/url] is required. Defaults are [b]20 metres[/b] and [b]B / Circle held for 0.6 seconds[/b].
+Defaults are [b]20 metres[/b] and [b]B / Circle held for 0.6 seconds[/b].
 
 [b][color=#A8D5C2]With the menu:[/color][/b] Open [b]Main Menu → Mod Settings → Press to Gather - Configurable[/b]. Set [b]Gather Distance[/b] and [b]Gather Button[/b], select [b]Apply[/b] to update gameplay. Restarting the game also applies the saved settings.
 
@@ -51,10 +51,12 @@ debugLogging = 0[/code]
 11 = D-pad Down
 12 = D-pad Left
 13 = D-pad Right[/code]
-[b]Save the file and restart the game.[/b] Your saved distance and button are used with or without the menu. Other game actions assigned to the chosen button still work.
+[b]Save the file and restart the game.[/b] Your saved distance and button are read at startup. Other game actions assigned to the chosen button still work.
 
 [b]Logging[/b] is Off by default. Enable it using the menu's final entry or by setting [b]debugLogging = 1[/b] in the same file; [b]0[/b] turns it off. Messages appear in
 [code]Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log[/code].
+
+Logging includes separate plant counts and reasons for skipped pickups, with up to three plant examples per gather. To investigate a missed plant, enable Logging, try Gather beside it, then check UE4SS.log.
 
 [size=4][b][color=#E8C88A]Credits and source[/color][/b][/size]
 

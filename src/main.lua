@@ -1,8 +1,10 @@
 -- Based on Toggleable Auto Gather by Tic0311, script v1.1.0.
--- Keeps original HarvestableComponent eligibility and StartInteraction behavior.
+-- Keeps original harvestables and adds explicitly listed, unowned botanical lootables.
 local MOD_NAME, HARVESTABLE_CLASS = "PressToGather", "Harvestable"
+local Plants = require('PlantGather')
 local STATE_INTERACTABLE, UU_PER_M = 4, 100
 local function log(message) print("["..MOD_NAME.."] "..message.."\n") end
+Plants.start(log)
 local ok, config = pcall(require, "config")
 if not ok or type(config) ~= 'table' then
     log('config.lua could not be read; using defaults.')
@@ -54,26 +56,25 @@ end
 ---@return string|nil itemName item name when eligible
 local function eligible_comp(actor)
     -- Only use genuine HarvestableComponents.
-    -- LootableComponents are intentionally ignored so the mod cannot
-    -- automatically pick up owned/stolen world loot.
+    -- Botanical lootables use their separate, explicit eligibility rules.
     local comp = actor.HarvestableComponent
 
     if comp == nil or not comp:IsValid() then
-        return nil
+        return nil,nil,'missing harvestable component'
     end
 
     -- InteractionState is userdata
     if tonumber(tostring(comp:GetInteractionState())) ~= STATE_INTERACTABLE then
-        return nil
+        return nil,nil,'not interactable'
     end
 
     if comp:IsInteractionEnabled() ~= true then
-        return nil
+        return nil,nil,'interaction disabled'
     end
 
     local item = comp.HarvestableConfig.Item
     if item == nil or not item:IsValid() then
-        return nil
+        return nil,nil,'missing item'
     end
 
     return comp, item:GetFullName()
@@ -99,21 +100,33 @@ end
 -- indivisible FindAllOf scan remains inherited from upstream and needs live timing.
 local activeJob
 local firstGatherReport = true
+local plantQueryWarning = false
 local function gather_nearby(scope)
     if activeJob then return end
-    local job = {scope=scope, radius=settings.radius_uu, index=1, gathered=0, requested=0, near=0, skipped=0}
+    local job = {scope=scope, radius=settings.radius_uu, index=1, gathered=0, requested=0, near=0, skipped=0,
+        plantFound=0,plantNear=0,plantRequests=0,classCache={},seen={},reasons={},examples=0}
     activeJob = job
     if settings.debugLogging then job.started = os.clock() end
     local function finish(status)
         if activeJob ~= job then return end
         activeJob = nil
+        Plants.finish(status==nil or status=='complete')
         if firstGatherReport or settings.debugLogging then
             firstGatherReport=false
             log(string.format('Gather %s: scanned %d; within %.0fm %d; interaction requests %d; immediate state changes %d; skipped %d.',
-                status or 'complete',job.actors and #job.actors or 0,job.radius/UU_PER_M,
+                status or 'complete',job.total or (job.actors and #job.actors or 0),job.radius/UU_PER_M,
                 job.near,job.requested,job.gathered,job.skipped))
         end
         if settings.debugLogging then
+            log(string.format('Botanical plants: matched %d; nearby %d; interaction requests %d%s.',
+                job.plantFound,job.plantNear,job.plantRequests,
+                job.plantScanReason and ('; '..job.plantScanReason) or ''))
+            local reasons={}
+            for reason,count in pairs(job.reasons) do reasons[#reasons+1]=reason..'='..count end
+            table.sort(reasons)
+            if #reasons>0 then log('Gather eligibility: '..table.concat(reasons,'; ')..'.') end
+        end
+        if settings.debugLogging and job.started then
             log(string.format('Gather elapsed %.3fs.',os.clock()-job.started))
         end
     end
@@ -130,10 +143,25 @@ local function gather_nearby(scope)
                 ExecuteInGameThreadWithDelay(16,step)
                 return
             end
+            if not job.plants then
+                -- Initial/recovery discovery gets its own later frame. Repeated
+                -- requests reuse plant actors collected through construction events.
+                local okPlants,actors,reason=pcall(Plants.find,scope)
+                job.plants=okPlants and actors or {}
+                job.plantScanReason=okPlants and reason or 'plant query unavailable'
+                if not okPlants and not plantQueryWarning then
+                    plantQueryWarning=true
+                    log('Botanical plant query unavailable; ordinary harvestables remain enabled: '..tostring(actors))
+                end
+                job.total=#job.actors+#job.plants
+                ExecuteInGameThreadWithDelay(16,step)
+                return
+            end
             local started, count = os.clock(), 0
-            while job.index <= #job.actors and count < 8 do
+            while job.index <= job.total and count < 8 do
                 if count > 0 and os.clock()-started >= 0.001 then break end
-                local actor=job.actors[job.index]
+                local botanical=job.index>#job.actors
+                local actor=botanical and job.plants[job.index-#job.actors] or job.actors[job.index]
                 job.index, count=job.index+1,count+1
                 local okActor, failure=pcall(function()
                     if not actor or not actor:IsValid() then job.skipped=job.skipped+1; return end
@@ -141,27 +169,55 @@ local function gather_nearby(scope)
                     if not actorWorld or not actorWorld:IsValid() or actorWorld:GetAddress() ~= scope.world:GetAddress() then
                         job.skipped=job.skipped+1; return
                     end
+                    local address=actor:GetAddress()
+                    if job.seen[address] then return end
+                    job.seen[address]=true
+                    local plantEntry
+                    if botanical then
+                        -- Keep known plants outside today's radius for later presses
+                        -- after the player moves; never cache unlisted world loot.
+                        plantEntry=Plants.observe(actor,job.classCache)
+                        if not plantEntry then
+                            if settings.debugLogging then
+                                job.reasons['plant: unlisted or invalid class']=(job.reasons['plant: unlisted or invalid class'] or 0)+1
+                            end
+                            return
+                        end
+                        job.plantFound=job.plantFound+1
+                    end
                     local distance=dist2(job.position,actor:K2_GetActorLocation())
                     if distance <= job.radius*job.radius then
                         job.near=job.near+1
-                        local comp,itemName=eligible_comp(actor)
+                        if botanical then job.plantNear=job.plantNear+1 end
+                        local comp,itemName,reason
+                        if botanical then comp,itemName,reason=Plants.eligible(actor,plantEntry)
+                        else comp,itemName,reason=eligible_comp(actor) end
                         if comp then
                             job.requested=job.requested+1
+                            if botanical then job.plantRequests=job.plantRequests+1 end
                             if gather(comp,itemName,distance) then job.gathered=job.gathered+1 end
+                        elseif settings.debugLogging then
+                            local key=(botanical and 'plant: ' or 'harvestable: ')..(reason or 'ineligible')
+                            job.reasons[key]=(job.reasons[key] or 0)+1
+                            if botanical and itemName and job.examples<3 then
+                                job.examples=job.examples+1
+                                log(string.format('Plant not requested: %s at %.1fm; %s.',itemName,math.sqrt(distance)/UU_PER_M,reason or 'ineligible'))
+                            end
                         end
                     end
                 end)
                 if not okActor then
+                    if botanical then Plants.retry() end
                     job.skipped=job.skipped+1
                     if settings.debugLogging and not job.firstError then
                         job.firstError=true;log('Gather skipped an invalid object: '..tostring(failure))
                     end
                 end
             end
-            if job.index <= #job.actors then ExecuteInGameThreadWithDelay(16,step)
+            if job.index <= job.total then ExecuteInGameThreadWithDelay(16,step)
             else finish() end
         end)
-        if not worked then activeJob=nil;log('Gather stopped: '..tostring(err)) end
+        if not worked then finish('stopped');log('Gather stopped: '..tostring(err)) end
     end
     ExecuteInGameThreadWithDelay(16,step)
 end

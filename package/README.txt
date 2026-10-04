@@ -4,6 +4,16 @@ Gather nearby harvestable plants and resources when you choose. **Hold B on Xbox
 
 This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https://www.nexusmods.com/thebloodofdawnwalker/mods/381) with a configurable controller hold shortcut, an in-game gathering distance setting from 10 to 200 metres, and compatibility fixes for Framecore UE4SS Performance mode. Tic0311 credits [Auto Gathering by Volitio](https://www.nexusmods.com/thebloodofdawnwalker/mods/205) as the inspiration for the original mod.
 
+## Additional wild plants
+
+Gather also checks these plants when you use the shortcut:
+
+- **Mushrooms:** Cave Fungus, Chanterelle, Green-Gilled Mushroom, Parasol Mushroom, Saffron Milk Cap and Slippery Jack.
+- **Herbs:** Aconite, Comfrey, Common Yarrow, Perilla, Ribwort Plantain, St John's Wort, Tansy and Yellow Sweet Clover.
+- **Berries:** Blueberry, Raspberry and Wild Strawberry.
+
+Plants must be available to interact with. Owned, quest-marked and risky pickups are excluded. Plant checks run on demand; discovered plants are reused for later presses, with newly loaded plants added as they appear.
+
 ## Dependencies
 
 - [UE4SS for BoD](https://www.nexusmods.com/thebloodofdawnwalker/mods/283) 2b or later, or [UE4SS for Dawnwalker](https://www.nexusmods.com/thebloodofdawnwalker/mods/18) 1.3 or later.
@@ -66,6 +76,8 @@ debugLogging = 0
 **Save the file and restart the game.** Your saved distance and button are also read at startup. The controller shortcut reads the physical button; other game actions assigned to it still work.
 
 **Logging** is Off by default. Enable it using the menu's final entry or by setting **debugLogging = 1** in the same file; **0** turns it off. Messages appear in `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`.
+
+Logging includes separate plant counts and reasons for skipped pickups, with up to three plant examples per gather. To investigate a missed plant, enable Logging, try Gather beside it, then check `UE4SS.log`.
 
 ## Credits and source
 

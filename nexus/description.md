@@ -8,7 +8,7 @@ This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https:/
 
 - Hold your chosen controller button for 0.6 seconds; the default is B on Xbox or Circle on PlayStation. Each hold gathers once; release the button to gather again.
 - Choose from **14 controller buttons** and select the gathering distance in Mod Settings or edit the settings file.
-- Targets eligible harvestable resources, not general loose world items or containers.
+- Gathers eligible harvestable resources and 17 additional wild plant types, including Cave Fungus, Comfrey and Green-Gilled Mushroom. Owned and quest-marked plants are excluded.
 
 ## Installation
 
@@ -17,7 +17,7 @@ This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https:/
 
 ## Configuration
 
-Required: [Mod Setting Menu 1.0.6 or later](https://www.nexusmods.com/thebloodofdawnwalker/mods/271). Open Mod Settings and press Apply to save and update gameplay.
+Open Mod Settings and press Apply to save and update gameplay.
 
 **With the menu:** Open **Main Menu → Mod Settings → Press to Gather - Configurable**. Set **Gather Distance** and **Gather Button**, select **Apply** to save and update the active game. Restarting the game also applies the saved settings.
 
@@ -56,9 +56,11 @@ debugLogging = 0
 | `12` | D-pad Left | D-pad Left |
 | `13` | D-pad Right | D-pad Right |
 
-**Save the file and restart the game.** Your saved distance and button are used with or without the menu. The controller shortcut reads the physical button; other game actions assigned to it still work.
+**Save the file and restart the game.** Your saved distance and button are read at startup. The controller shortcut reads the physical button; other game actions assigned to it still work.
 
 **Logging** is Off by default. Enable it using the menu's final entry or by setting **debugLogging = 1** in the same file; **0** turns it off. Messages appear in `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`.
+
+Logging includes separate plant counts and reasons for skipped pickups, with up to three plant examples per gather. To investigate a missed plant, enable Logging, try Gather beside it, then check `UE4SS.log`.
 
 ## Credits and source
 
@@ -75,6 +77,6 @@ Credit Tic0311, Volitio and this edition's contributors when sharing or modifyin
 
 ## Live settings
 
-Mod Setting Menu 1.0.6 or later is required. Its callback bridge also requires `HookProcessConsoleExec = 1` in `UE4SS-settings.ini`. Manage that loader setting through your Vortex loader configuration; this archive contains no replacement global UE4SS INI.
+Enable `HookProcessConsoleExec = 1` in your Vortex-managed `UE4SS-settings.ini` so Apply can update gameplay. This archive contains no replacement global UE4SS INI.
 
 Settings are prepared when the game starts and are available from the main menu before the first save. Press **Apply** to save and update the active game. Changes made while loading are retained for the next valid player. Restore and Discard leave saved settings unchanged; Reset takes effect after Apply.
