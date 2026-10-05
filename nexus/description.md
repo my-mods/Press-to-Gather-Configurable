@@ -80,3 +80,51 @@ Credit Tic0311, Volitio and this edition's contributors when sharing or modifyin
 Enable `HookProcessConsoleExec = 1` in your Vortex-managed `UE4SS-settings.ini` so Apply can update gameplay. This archive contains no replacement global UE4SS INI.
 
 Settings are prepared when the game starts and are available from the main menu before the first save. Press **Apply** to save and update the active game. Changes made while loading are retained for the next valid player. Restore and Discard leave saved settings unchanged; Reset takes effect after Apply.
+
+## My Dawnwalker mods
+
+### Combat your way
+
+**[Easier Parry and Dodge While Blocking](https://www.nexusmods.com/thebloodofdawnwalker/mods/161)**
+Make parry and perfect-dodge windows longer or shorter to suit your timing.
+**Highlights:** Consistent same-side or opposite-side ripostes; dodge while blocking; adjustable dodge invulnerability duration.
+
+**[Combat Camera - Configurable](https://www.nexusmods.com/thebloodofdawnwalker/mods/480)**
+Choose how your camera follows enemies and how you select your targets.
+**Highlights:** Free, smooth or native tracking; camera-directed or fixed targets; automatic lock on hit; optional center dot.
+
+**[Fair Duelist - Customizable Difficulty](https://www.nexusmods.com/thebloodofdawnwalker/mods/284)**
+Build your own difficulty with precise control over combat balance.
+**Highlights:** Enemy health and damage; stamina costs; normal, low-health and ranged attack delays; coordinated enemy attacks.
+
+**[Health Regen - Configurable](https://www.nexusmods.com/thebloodofdawnwalker/mods/448)**
+Set separate health regeneration rates for your human and vampire forms.
+**Highlights:** Optional healing during combat; optional recovery of lost vampire segments; healing stops at the selected limit.
+
+### Controls and exploration
+
+**[Controller Tweaks and Remap](https://www.nexusmods.com/thebloodofdawnwalker/mods/203)**
+Tailor your controller layout and make walking and menu access more comfortable.
+**Highlights:** 31 controller settings; wider walking range; short press for Map, long press for Game Hub; controller stutter fixes.
+
+**[Press to Gather - Configurable](https://www.nexusmods.com/thebloodofdawnwalker/mods/449)**
+Gather nearby harvestable resources with one keyboard press or controller hold.
+**Highlights:** Adjustable 10–200 m range; 14 controller button choices; support for 17 additional wild plant types.
+
+**[Less Wildlife](https://www.nexusmods.com/thebloodofdawnwalker/mods/711)**
+Make ordinary boar herds and wolf packs smaller—or larger.
+**Highlights:** Population from 10% to 200%; separate boar and wolf switches; quest and named animals keep their normal values.
+
+### Your view, your style
+
+**[Quiet Dawn - Configurable HUD](https://www.nexusmods.com/thebloodofdawnwalker/mods/452)**
+Clear the screen while keeping health and stamina alerts when you need them.
+**Highlights:** 17 panels with independent opacity and size; hold-to-peek; configurable combat cues, enemy information and effect icons.
+
+**[Style Without Sacrifice - Your Transmogrification Wardrobe](https://www.nexusmods.com/thebloodofdawnwalker/mods/721)**
+Choose your equipment's appearance while keeping its stats.
+**Highlights:** Separate day and night outfits; three saved presets; character preview; hide selected equipment; collected or all looks.
+
+**[Night Vision - Configurable](https://www.nexusmods.com/thebloodofdawnwalker/mods/694)**
+See in the dark as a vampire with natural colours or your preferred monochrome blend.
+**Highlights:** Independent brightness and colour controls; keyboard or controller toggle; stays enabled through save loading and camera changes.
