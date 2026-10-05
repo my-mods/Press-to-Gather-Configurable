@@ -2,7 +2,7 @@
 
 Gather nearby harvestable plants and resources when you choose. **Hold B on Xbox / Circle on PlayStation for 0.6 seconds** by default, or **press O** on your keyboard. The gathering distance defaults to **20 metres** and can be set from **10 to 200 metres in 10-metre steps**, using Mod Setting Menu or the settings file.
 
-This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https://www.nexusmods.com/thebloodofdawnwalker/mods/381) with a configurable controller hold shortcut, an in-game gathering distance setting from 10 to 200 metres, and compatibility fixes for Framecore UE4SS Performance mode. Tic0311 credits [Auto Gathering by Volitio](https://www.nexusmods.com/thebloodofdawnwalker/mods/205) as the inspiration for the original mod.
+This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https://www.nexusmods.com/thebloodofdawnwalker/mods/381) with a configurable controller hold shortcut and an in-game gathering distance setting from 10 to 200 metres. Tic0311 credits [Auto Gathering by Volitio](https://www.nexusmods.com/thebloodofdawnwalker/mods/205) as the inspiration for the original mod.
 
 ## Additional wild plants
 
@@ -16,7 +16,7 @@ Plants must be available to interact with. Owned, quest-marked and risky pickups
 
 ## Dependencies
 
-- [UE4SS for BoD](https://www.nexusmods.com/thebloodofdawnwalker/mods/283) 2b or later, or [UE4SS for Dawnwalker](https://www.nexusmods.com/thebloodofdawnwalker/mods/18) 1.3 or later.
+- Required: [UE4SS for Dawnwalker by Vercadi](https://www.nexusmods.com/thebloodofdawnwalker/mods/18) **1.3 (RC6) or later**.
 - Required: [Mod Setting Menu 1.0.6 or later](https://www.nexusmods.com/thebloodofdawnwalker/mods/271).
 
 ## Installation
@@ -83,7 +83,7 @@ Logging includes separate plant counts and reasons for skipped pickups, with up 
 
 - **Tic0311** — original [Toggleable Auto Gather - Press to Gather](https://www.nexusmods.com/thebloodofdawnwalker/mods/381) and its gathering logic. Modified and redistributed under the author's credited-use permissions.
 - **Volitio** — [Auto Gathering](https://www.nexusmods.com/thebloodofdawnwalker/mods/205), credited by Tic0311 as the inspiration for the original mod.
-- **mmarcussa** — the separate Mod Setting Menu framework. **Framecore and the UE4SS contributors** — the separate scripting runtime.
+- **mmarcussa** — the separate Mod Setting Menu framework. **Vercadi and the UE4SS contributors** — the separate scripting runtime.
 
 [Source repository and development history](https://github.com/my-mods/Press-to-Gather-Configurable)
 
