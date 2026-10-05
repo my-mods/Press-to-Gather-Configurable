@@ -2,7 +2,7 @@
 
 Gather nearby harvestable plants and resources when you choose. [b]Hold B on Xbox / Circle on PlayStation for 0.6 seconds[/b] by default, or [b]press O[/b] on your keyboard. The gathering distance defaults to [b]20 metres[/b] and can be set from [b]10 to 200 metres in 10-metre steps[/b], using the Mod Setting Menu or the settings file.
 
-This mod builds on [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/381]Toggleable Auto Gather - Press to Gather by Tic0311[/url] with a configurable controller hold shortcut, an in-game gathering distance setting from 10 to 200 metres, and compatibility fixes for Framecore UE4SS Performance mode. Tic0311 credits [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/205]Auto Gathering by Volitio[/url] as the inspiration for the original mod.
+This mod builds on [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/381]Toggleable Auto Gather - Press to Gather by Tic0311[/url] with a configurable controller hold shortcut and an in-game gathering distance setting from 10 to 200 metres. Tic0311 credits [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/205]Auto Gathering by Volitio[/url] as the inspiration for the original mod.
 
 [size=4][b][color=#E8C88A]Controls and features[/color][/b][/size]
 
@@ -63,7 +63,7 @@ Logging includes separate plant counts and reasons for skipped pickups, with up 
 [list]
 [*][b][color=#A8D5C2]Tic0311[/color][/b] — original [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/381]Toggleable Auto Gather - Press to Gather[/url] and its gathering logic. Modified and redistributed under the author's credited-use permissions.
 [*][b][color=#A8D5C2]Volitio[/color][/b] — [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/205]Auto Gathering[/url], credited by Tic0311 as the inspiration for the original mod.
-[*][b][color=#A8D5C2]mmarcussa[/color][/b] — the separate Mod Setting Menu framework. [b]Framecore and the UE4SS contributors[/b] — the separate scripting runtime.
+[*][b][color=#A8D5C2]mmarcussa[/color][/b] — the separate Mod Setting Menu framework. [b]Vercadi and the UE4SS contributors[/b] — the separate scripting runtime.
 [/list]
 [url=https://github.com/my-mods/Press-to-Gather-Configurable]Source repository and development history[/url]
 
