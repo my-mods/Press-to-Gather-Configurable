@@ -1,5 +1,9 @@
 ## 1.3
 
+## Unreleased
+
+- Reuse discovered harvestables between Gather requests, including streamed-in resources and world-change recovery.
+
 - Added support for more wild plants, including Cave Fungus, Comfrey and Green-Gilled Mushroom.
 
 ## 1.2

@@ -88,3 +88,9 @@ Logging includes separate plant counts and reasons for skipped pickups, with up 
 [Source repository and development history](https://github.com/my-mods/Press-to-Gather-Configurable)
 
 See `LICENSE.txt` for reuse terms and the included license notices.
+
+## Performance and diagnostics
+
+Repeated Gather requests reuse validated harvestable actors and construction notifications. The first request in a world and recovery after interruption or cache overflow still perform discovery. Distance, interaction state and plant ownership are checked on each request. If construction notifications are unavailable, ordinary harvestables retain discovery on every request.
+
+Enable the final **Logging** setting for diagnostics in `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`. Leave it Off for normal play. Timings and offline checks do not establish an in-game frame-rate improvement.

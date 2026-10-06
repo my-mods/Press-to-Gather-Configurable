@@ -2,9 +2,11 @@
 -- Keeps original harvestables and adds explicitly listed, unowned botanical lootables.
 local MOD_NAME, HARVESTABLE_CLASS = "PressToGather", "Harvestable"
 local Plants = require('PlantGather')
+local Harvestables = require('HarvestableCache')
 local STATE_INTERACTABLE, UU_PER_M = 4, 100
 local function log(message) print("["..MOD_NAME.."] "..message.."\n") end
 Plants.start(log)
+Harvestables.start()
 local ok, config = pcall(require, "config")
 if not ok or type(config) ~= 'table' then
     log('config.lua could not be read; using defaults.')
@@ -95,9 +97,10 @@ local function gather(comp, itemName, d2)
     return changed
 end
 
--- One requested gather job at a time. World discovery occurs once per request.
+-- One requested gather job at a time. Discovery is seeded once per world and
+-- refreshed after missed candidates or capacity overflow; construction supplies new actors.
 -- Process at most eight actors or one millisecond per 16ms continuation; an
--- indivisible FindAllOf scan remains inherited from upstream and needs live timing.
+-- initial/recovery FindAllOf remains indivisible and needs live timing.
 local activeJob
 local firstGatherReport = true
 local plantQueryWarning = false
@@ -111,6 +114,7 @@ local function gather_nearby(scope)
         if activeJob ~= job then return end
         activeJob = nil
         Plants.finish(status==nil or status=='complete')
+        Harvestables.finish(status==nil or status=='complete')
         if firstGatherReport or settings.debugLogging then
             firstGatherReport=false
             log(string.format('Gather %s: scanned %d; within %.0fm %d; interaction requests %d; immediate state changes %d; skipped %d.',
@@ -138,7 +142,7 @@ local function gather_nearby(scope)
                 local position = scope.pawn:K2_GetActorLocation()
                 -- Copy returned struct fields; never retain the borrowed wrapper.
                 job.position = {X=position.X,Y=position.Y,Z=position.Z}
-                job.actors = FindAllOf(HARVESTABLE_CLASS) or {}
+                job.actors = Harvestables.find(scope)
                 -- Never add actor interactions to the same frame as the global scan.
                 ExecuteInGameThreadWithDelay(16,step)
                 return
@@ -166,6 +170,9 @@ local function gather_nearby(scope)
                 local okActor, failure=pcall(function()
                     if not actor or not actor:IsValid() then job.skipped=job.skipped+1; return end
                     local actorWorld = actor:GetWorld()
+                    if not actorWorld or not actorWorld:IsValid() then
+                        if botanical then Plants.retry() else Harvestables.retry() end
+                    end
                     if not actorWorld or not actorWorld:IsValid() or actorWorld:GetAddress() ~= scope.world:GetAddress() then
                         job.skipped=job.skipped+1; return
                     end
@@ -184,7 +191,7 @@ local function gather_nearby(scope)
                             return
                         end
                         job.plantFound=job.plantFound+1
-                    end
+                    else Harvestables.observe(actor) end
                     local distance=dist2(job.position,actor:K2_GetActorLocation())
                     if distance <= job.radius*job.radius then
                         job.near=job.near+1
@@ -207,7 +214,7 @@ local function gather_nearby(scope)
                     end
                 end)
                 if not okActor then
-                    if botanical then Plants.retry() end
+                    if botanical then Plants.retry() else Harvestables.retry() end
                     job.skipped=job.skipped+1
                     if settings.debugLogging and not job.firstError then
                         job.firstError=true;log('Gather skipped an invalid object: '..tostring(failure))
