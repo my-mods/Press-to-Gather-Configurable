@@ -65,7 +65,7 @@
         "impact": "patch",
         "rationale": "Cache harvestable discovery with streaming and world-change recovery; correct shipped dependency documentation.",
         "majorOverride": false,
-        "reviewedInputs": "d0c82600626df9fc68c259be2d4bb69da0a26a040f4c1a45526215093a10d842",
+        "reviewedInputs": "4c052049f650f872f7ee7930c4505699e2c1cd4acf70cc239c870a225ee93c54",
         "divergenceReviewed": false
       }
     }
