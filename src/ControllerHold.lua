@@ -15,17 +15,17 @@ function M.start(settings, gather, log)
         return valid(a) and valid(b) and a:GetAddress() == b:GetAddress()
     end
     local function trace(message)
-        if settings.debugLogging then log(message) end
+        if settings.debugLogging then require('ModLog').debug(message) end
     end
     local function warn(key, message)
         if warnings[key] then return end
         warnings[key] = true
-        log(message)
+        require('ModLog').warning(message)
     end
     local function report_blocked(reason)
         if warnings[reason] then return end
         warnings[reason]=true
-        log('Gather input blocked: '..reason..'. Release the button before trying again in gameplay.')
+        if settings.debugLogging then require('ModLog').debug('Gather input blocked: '..reason..'. Release the button before trying again in gameplay.') end
     end
     local function reset_hold()
         holdStart, armed, fired = nil, false, false
@@ -105,7 +105,7 @@ function M.start(settings, gather, log)
             end
             if firstDown then
                 firstDown=false
-                log('Controller button detected: '..settings.gather_key..'.')
+                require('ModLog').info('Controller button detected: '..settings.gather_key..'.')
             end
             local blocked = blocked_reason(scope)
             if blocked then
@@ -121,7 +121,7 @@ function M.start(settings, gather, log)
                 fired = true
                 if firstHold then
                     firstHold=false
-                    log('Controller hold accepted; gathering requested.')
+                    require('ModLog').info('Controller hold accepted; gathering requested.')
                 end
                 request_gather(scope)
             end
@@ -181,7 +181,7 @@ function M.start(settings, gather, log)
             pollHandle = handle
             if firstReady then
                 firstReady=false
-                log('Local player ready; controller hold input active.')
+                require('ModLog').info('Local player ready; controller hold input active.')
             end
             if settings.debugLogging then
                 trace(string.format('Controller ready after %d attempt(s); hold %.2fs, poll %dms.', job.attempts, settings.hold_seconds, POLL_MS))
@@ -226,7 +226,7 @@ function M.start(settings, gather, log)
     end
     for _, name in ipairs({'ExecuteInGameThreadWithDelay','LoopInGameThreadWithDelay','CancelDelayedAction'}) do
         if type(_G[name]) ~= 'function' then
-            log('Cannot start controller input: required UE4SS API '..name..' is unavailable.')
+            require('ModLog').error('Cannot start controller input: required UE4SS API '..name..' is unavailable.')
             return false
         end
     end

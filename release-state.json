@@ -62,10 +62,10 @@
         "VortexExtension"
       ],
       "pending": {
-        "impact": "patch",
-        "rationale": "Cache harvestable discovery with streaming and world-change recovery; correct shipped dependency documentation.",
+        "impact": "minor",
+        "rationale": "Complete Nexus-baseline working-tree delta: cached harvestable discovery and streaming/world-change recovery; user-owned pending rare-plant opt-in and streamed-area botanical fixes are preserved but not committed by this logging task; add cumulative five-level Logging, preserving startup schema completion and current menu application; update dependency/public documentation.",
         "majorOverride": false,
-        "reviewedInputs": "4c052049f650f872f7ee7930c4505699e2c1cd4acf70cc239c870a225ee93c54",
+        "reviewedInputs": "0afd520e7dd93f45d707de98d9c01986021b2b75d4d5841eb0528e1bd70bcc3a",
         "divergenceReviewed": false
       }
     }

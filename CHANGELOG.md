@@ -1,3 +1,7 @@
+## Pending development
+
+- Choose diagnostic detail with five Logging levels; Warning is the default and Off is silent.
+
 ## 1.3
 
 ## Unreleased

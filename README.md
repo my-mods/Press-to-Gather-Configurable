@@ -32,7 +32,7 @@ Settings are prepared when the game starts and are available from the main menu 
 
 Distance and Logging update immediately. Changing Gather Button rebuilds its cached key once, clears the current hold, and requires release before gathering again. A gather already in progress finishes with the distance captured when it began.
 
-Logging is the final, sole diagnostic control. It changes immediately; verbose logging is Off by default. Logs are written to `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`. Settings are never polled.
+Logging is the final, sole diagnostic control. It changes immediately; Warning is the default; detailed tracing requires Debug. Logs are written to `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`. Settings are never polled.
 
 Required: [Mod Setting Menu 1.0.6 or later](https://www.nexusmods.com/thebloodofdawnwalker/mods/271). Open Mod Settings and press Apply to save and update gameplay.
 
@@ -75,7 +75,7 @@ debugLogging = 0
 
 **Save the file and restart the game.** Your saved distance and button are also read at startup. The controller shortcut reads the physical button; other game actions assigned to it still work.
 
-**Logging** is Off by default. Enable it using the menu's final entry or by setting **debugLogging = 1** in the same file; **0** turns it off. Messages appear in `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`.
+**Logging** offers Off, Error, Warning (default), Info and Debug. Select Debug for troubleshooting details.
 
 Logging includes separate plant counts and reasons for skipped pickups, with up to three plant examples per gather. To investigate a missed plant, enable Logging, try Gather beside it, then check `UE4SS.log`.
 
@@ -93,4 +93,10 @@ See `LICENSE.txt` for reuse terms and the included license notices.
 
 Repeated Gather requests reuse validated harvestable actors and construction notifications. The first request in a world and recovery after interruption or cache overflow still perform discovery. Distance, interaction state and plant ownership are checked on each request. If construction notifications are unavailable, ordinary harvestables retain discovery on every request.
 
-Enable the final **Logging** setting for diagnostics in `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`. Leave it Off for normal play. Timings and offline checks do not establish an in-game frame-rate improvement.
+Enable the final **Logging** offers Off, Error, Warning (default), Info and Debug. Select Debug for troubleshooting details.
+
+### Logging levels
+
+The final **Logging** setting offers **Off**, **Error**, **Warning** (default), **Info**, and **Debug**. Levels are cumulative: Error reports stopped features, Warning adds degraded capabilities, Info adds normal lifecycle events, and Debug adds detailed tracing and aggregate timings. Off silences all output from this mod. The numeric INI key is `logLevel` (0–4). Set Logging to Debug, Apply, reproduce an issue, and include `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log` in your report.
+
+An existing logging On choice becomes Debug; an existing Off choice becomes Warning. An explicit new level always takes precedence. Other settings and comments are retained during this startup conversion.

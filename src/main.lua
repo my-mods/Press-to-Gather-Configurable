@@ -1,10 +1,13 @@
+local Log=require('ModLog')
+local logDirectory=assert(debug.getinfo(1,'S').source:match('^@(.+[\\/])'))
+Log.initialize(logDirectory)
 -- Based on Toggleable Auto Gather by Tic0311, script v1.1.0.
 -- Keeps original harvestables and adds explicitly listed, unowned botanical lootables.
 local MOD_NAME, HARVESTABLE_CLASS = "PressToGather", "Harvestable"
 local Plants = require('PlantGather')
 local Harvestables = require('HarvestableCache')
 local STATE_INTERACTABLE, UU_PER_M = 4, 100
-local function log(message) print("["..MOD_NAME.."] "..message.."\n") end
+local function log(message) Log.warning(message) end
 Plants.start(log)
 Harvestables.start()
 local ok, config = pcall(require, "config")
@@ -92,7 +95,7 @@ local function gather(comp, itemName, d2)
     local state = tonumber(tostring(comp:GetInteractionState()))
     local changed = state ~= nil and state ~= STATE_INTERACTABLE
     if settings.debugLogging and changed then
-        log(string.format("Gathered %s at %.0fu", itemName, dist))
+        Log.debug(string.format("Gathered %s at %.0fu", itemName, dist))
     end
     return changed
 end
@@ -115,23 +118,23 @@ local function gather_nearby(scope)
         activeJob = nil
         Plants.finish(status==nil or status=='complete')
         Harvestables.finish(status==nil or status=='complete')
-        if firstGatherReport or settings.debugLogging then
+        if Log.allows(3) and (firstGatherReport or settings.debugLogging) then
             firstGatherReport=false
-            log(string.format('Gather %s: scanned %d; within %.0fm %d; interaction requests %d; immediate state changes %d; skipped %d.',
+            Log.info(string.format('Gather %s: scanned %d; within %.0fm %d; interaction requests %d; immediate state changes %d; skipped %d.',
                 status or 'complete',job.total or (job.actors and #job.actors or 0),job.radius/UU_PER_M,
                 job.near,job.requested,job.gathered,job.skipped))
         end
         if settings.debugLogging then
-            log(string.format('Botanical plants: matched %d; nearby %d; interaction requests %d%s.',
+            Log.debug(string.format('Botanical plants: matched %d; nearby %d; interaction requests %d%s.',
                 job.plantFound,job.plantNear,job.plantRequests,
                 job.plantScanReason and ('; '..job.plantScanReason) or ''))
             local reasons={}
             for reason,count in pairs(job.reasons) do reasons[#reasons+1]=reason..'='..count end
             table.sort(reasons)
-            if #reasons>0 then log('Gather eligibility: '..table.concat(reasons,'; ')..'.') end
+            if #reasons>0 then Log.debug('Gather eligibility: '..table.concat(reasons,'; ')..'.') end
         end
         if settings.debugLogging and job.started then
-            log(string.format('Gather elapsed %.3fs.',os.clock()-job.started))
+            Log.debug(string.format('Gather elapsed %.3fs.',os.clock()-job.started))
         end
     end
     local function step()
@@ -208,7 +211,7 @@ local function gather_nearby(scope)
                             job.reasons[key]=(job.reasons[key] or 0)+1
                             if botanical and itemName and job.examples<3 then
                                 job.examples=job.examples+1
-                                log(string.format('Plant not requested: %s at %.1fm; %s.',itemName,math.sqrt(distance)/UU_PER_M,reason or 'ineligible'))
+                                Log.debug(string.format('Plant not requested: %s at %.1fm; %s.',itemName,math.sqrt(distance)/UU_PER_M,reason or 'ineligible'))
                             end
                         end
                     end
@@ -217,20 +220,20 @@ local function gather_nearby(scope)
                     if botanical then Plants.retry() else Harvestables.retry() end
                     job.skipped=job.skipped+1
                     if settings.debugLogging and not job.firstError then
-                        job.firstError=true;log('Gather skipped an invalid object: '..tostring(failure))
+                        job.firstError=true;Log.debug('Gather skipped an invalid object: '..tostring(failure))
                     end
                 end
             end
             if job.index <= job.total then ExecuteInGameThreadWithDelay(16,step)
             else finish() end
         end)
-        if not worked then finish('stopped');log('Gather stopped: '..tostring(err)) end
+        if not worked then finish('stopped');Log.error('Gather stopped: '..tostring(err)) end
     end
     ExecuteInGameThreadWithDelay(16,step)
 end
 
-if require('ControllerHold').start(settings,gather_nearby,log) then
-    log(string.format('Configured: hold %s for %.1fs to gather within %.0fm%s; waiting for local player.',
+if require('ControllerHold').start(settings,gather_nearby,log) and Log.allows(3) then
+    Log.info(string.format('Configured: hold %s for %.1fs to gather within %.0fm%s; waiting for local player.',
         settings.gather_key,settings.hold_seconds,settings.radius_uu/UU_PER_M,
         keyboardKey and ('; keyboard '..keyboardName) or ''))
 end
