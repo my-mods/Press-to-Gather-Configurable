@@ -14,6 +14,9 @@ This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https:/
 
 - **Vortex:** Install Press-to-Gather-Configurable.zip through Vortex, enable it and deploy.
 - **Manual:** Copy the archive's Data/PressToGather folder into ...\steamapps\common\The Blood of Dawnwalker\Dawnwalker\Binaries\Win64\ue4ss\Mods\, preserving the folder structure.
+## Reporting Bugs and other issues
+
+If you encounter an issue, set **Logging** to **On** in this mod’s Mod Setting Menu settings, apply the change, reproduce the issue. Then start either a bug report in the Bugs tab on Nexus (preferred method for me to track things), or at least start a new thread in comments and send me **Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log** from your game folder. Do not report unrelated bugs in other people's threads, please, this makes it impossible for me to track issues.
 
 ## Configuration
 
