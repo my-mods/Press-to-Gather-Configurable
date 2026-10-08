@@ -63,9 +63,9 @@
       ],
       "pending": {
         "impact": "minor",
-        "rationale": "Complete Nexus-baseline working-tree delta: cached harvestable discovery and streaming/world-change recovery; user-owned pending rare-plant opt-in and streamed-area botanical fixes are preserved but not committed by this logging task; add cumulative five-level Logging, preserving startup schema completion and current menu application; update dependency/public documentation.",
+        "rationale": "Complete Nexus-baseline working-tree delta: cached harvestable discovery and streaming/world-change recovery; user-owned pending rare-plant opt-in and streamed-area botanical fixes are preserved but not committed by this logging task; add cumulative five-level Logging, preserving startup schema completion and current menu application; update dependency/public documentation. Release preparation: verified unchanged live Nexus baseline on 2026-10-08; consolidated complete player changelog and preserved published page formatting/history.",
         "majorOverride": false,
-        "reviewedInputs": "0afd520e7dd93f45d707de98d9c01986021b2b75d4d5841eb0528e1bd70bcc3a",
+        "reviewedInputs": "3cd7f07efec2c1373947c15840f9dd34d2744b668e3cf1800adb105cf39ba915",
         "divergenceReviewed": false
       }
     }

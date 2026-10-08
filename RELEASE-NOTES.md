@@ -1,6 +1,5 @@
-# Press to Gather - Configurable 1.4.0-dev
+# Press to Gather - Configurable 1.4.0
 
-- Added Gather rare plants, Off by default, so purple Epic and Unique plants stay yours to discover unless you opt in. Blue Master plants are gathered normally.
-- Fixed nearby plants being missed in streamed areas, including Cave Fungus with rare-plant gathering enabled.
-- Reuse discovered resources between Gather requests.
-- Added five Logging levels: Off, Error, Warning (default), Info and Debug.
+- Add Gather rare plants, Off by default. Enable it to gather purple Epic and Unique plants; blue Master plants are gathered normally.
+- Fix missed nearby plants in streamed areas, including Cave Fungus when Gather rare plants is enabled.
+- Choose Off, Error, Warning, Info or Debug logging; Warning is the default.

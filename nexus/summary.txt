@@ -1,1 +1,1 @@
-Hold your chosen controller button or press O to gather nearby resources. Adjustable 10?200 m range (20 m default), 14 button choices, and optional rare-plant gathering. Purple Epic and Unique plants are left for you to discover by default.
+Gather nearby resources with a keyboard press or controller hold. Configure the range and button, with an optional setting to gather rare plants.
