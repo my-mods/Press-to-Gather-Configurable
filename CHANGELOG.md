@@ -1,12 +1,11 @@
-## Pending development
+## 1.4.0-dev
 
-- Choose diagnostic detail with five Logging levels; Warning is the default and Off is silent.
+- Gather rare plants is Off by default: leave purple Epic and Unique plants to discover yourself, or enable the new setting to include them. Blue Master plants are gathered normally.
+- Nearby plants in streamed areas are no longer missed, including Cave Fungus when rare-plant gathering is enabled.
+- Reuse discovered resources between Gather requests.
+- Choose five Logging levels, from silent Off to detailed Debug. Warning is the default.
 
 ## 1.3
-
-## Unreleased
-
-- Reuse discovered harvestables between Gather requests, including streamed-in resources and world-change recovery.
 
 - Added support for more wild plants, including Cave Fungus, Comfrey and Green-Gilled Mushroom.
 

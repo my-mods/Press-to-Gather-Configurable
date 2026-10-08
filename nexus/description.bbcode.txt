@@ -11,6 +11,8 @@ This mod builds on [url=https://www.nexusmods.com/thebloodofdawnwalker/mods/381]
 [*]Choose from [b]14 controller buttons[/b] and select the gathering distance in the [b]Mod Settings[/b] menu or edit the settings file.
 [*]Gathers eligible harvestable resources and [b]17 additional wild plant types[/b], including Cave Fungus, Comfrey and Green-Gilled Mushroom. Owned and quest-marked plants are excluded.
 [/list]
+[b]Gather rare plants[/b] is [b]Off by default[/b], leaving rare finds for you to discover. Turn it On to include verified [b]Epic (purple)[/b] and [b]Unique[/b] plants, including Cave Fungus. [b]Master (blue)[/b] plants, such as Chanterelle, Perilla and Tansy, are gathered normally. Quest or unknown plant rarities are excluded. Only the known plant types described here are supported.
+
 [size=4][b][color=#E8C88A]Installation[/color][/b][/size]
 
 [list]
@@ -28,7 +30,7 @@ Apply saves changes and updates gameplay. Enable HookProcessConsoleExec = 1 in y
 
 Defaults are [b]20 metres[/b] and [b]B / Circle held for 0.6 seconds[/b].
 
-[b][color=#A8D5C2]With the menu:[/color][/b] Open [b]Main Menu → Mod Settings → Press to Gather - Configurable[/b]. Set [b]Gather Distance[/b] and [b]Gather Button[/b], select [b]Apply[/b] to update gameplay. Restarting the game also applies the saved settings.
+[b][color=#A8D5C2]With the menu:[/color][/b] Open [b]Main Menu → Mod Settings → Press to Gather - Configurable[/b]. Set [b]Gather Distance[/b], [b]Gather Button[/b] and [b]Gather rare plants[/b], select [b]Apply[/b] to update gameplay. Restarting the game also applies the saved settings.
 
 [b][color=#A8D5C2]Manual file editing:[/color][/b]
 [list=1]
@@ -40,7 +42,8 @@ In its existing [b][Settings][/b] section, change [b]GatherRadiusMeters[/b] to a
 [code][Settings]
 GatherRadiusMeters = 20
 GatherButton = 0
-debugLogging = 0[/code]
+GatherRarePlants = 0
+logLevel = 2[/code]
 [b][color=#A8D5C2]GatherButton values (Xbox / PlayStation):[/color][/b]
 [code]0 = B (default) / Circle
 1 = A / Cross
@@ -58,10 +61,9 @@ debugLogging = 0[/code]
 13 = D-pad Right[/code]
 [b]Save the file and restart the game.[/b] Your saved distance and button are read at startup. Other game actions assigned to the chosen button still work.
 
-[b]Logging[/b] is Off by default. Enable it using the menu's final entry or by setting [b]debugLogging = 1[/b] in the same file; [b]0[/b] turns it off. Messages appear in
-[code]Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log[/code].
+[b]GatherRarePlants = 0[/b] leaves rare plants untouched; [b]1[/b] includes supported Epic and Unique plants.
 
-Logging includes separate plant counts and reasons for skipped pickups, with up to three plant examples per gather. To investigate a missed plant, enable Logging, try Gather beside it, then check UE4SS.log.
+[b]Logging[/b] offers Off (0), Error (1), Warning (2, default), Info (3) and Debug (4). Levels are cumulative; Off silences this mod. For missed pickups, select Debug, Apply, try Gather beside the plant, then check Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log. Debug includes plant counts, skip reasons and up to three examples per gather.
 
 [size=4][b][color=#E8C88A]Credits and source[/color][/b][/size]
 
@@ -104,7 +106,7 @@ Tailor your controller layout and make walking and menu access more comfortable.
 
 [b][color=#A8D5C2][url=https://www.nexusmods.com/thebloodofdawnwalker/mods/449]Press to Gather - Configurable[/url][/color][/b]
 Gather nearby harvestable resources with one keyboard press or controller hold.
-[b]Highlights:[/b] Adjustable 10–200 m range; 14 controller button choices; support for 17 additional wild plant types.
+[b]Highlights:[/b] Adjustable 10–200 m range; 14 controller button choices; support for 17 additional wild plant types; optional rare-plant gathering.
 
 [b][color=#A8D5C2][url=https://www.nexusmods.com/thebloodofdawnwalker/mods/711]Less Wildlife[/url][/color][/b]
 Make ordinary boar herds and wolf packs smaller—or larger.

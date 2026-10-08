@@ -10,6 +10,8 @@ This mod builds on [Toggleable Auto Gather - Press to Gather by Tic0311](https:/
 - Choose from **14 controller buttons** and select the gathering distance in Mod Settings or edit the settings file.
 - Gathers eligible harvestable resources and 17 additional wild plant types, including Cave Fungus, Comfrey and Green-Gilled Mushroom. Owned and quest-marked plants are excluded.
 
+**Gather rare plants** is **Off by default**, leaving rare finds for you to discover. Turn it On to include verified **Epic (purple)** and **Unique** plants, including Cave Fungus. **Master (blue)** plants, such as Chanterelle, Perilla and Tansy, are gathered normally. Quest or unknown plant rarities are excluded. Only the known plant types described here are supported.
+
 ## Installation
 
 - **Vortex:** Install Press-to-Gather-Configurable.zip through Vortex, enable it and deploy.
@@ -22,7 +24,7 @@ If you encounter an issue, set **Logging** to **Debug** in this mod’s Mod Sett
 
 Open Mod Settings and press Apply to save and update gameplay.
 
-**With the menu:** Open **Main Menu → Mod Settings → Press to Gather - Configurable**. Set **Gather Distance** and **Gather Button**, select **Apply** to save and update the active game. Restarting the game also applies the saved settings.
+**With the menu:** Open **Main Menu → Mod Settings → Press to Gather - Configurable**. Set **Gather Distance**, **Gather Button** and **Gather rare plants**, select **Apply** to save and update the active game. Restarting the game also applies the saved settings.
 
 **Editing the settings file:**
 
@@ -39,7 +41,8 @@ In its existing **[Settings]** section, change **GatherRadiusMeters** to a value
 [Settings]
 GatherRadiusMeters = 20
 GatherButton = 0
-debugLogging = 0
+GatherRarePlants = 0
+logLevel = 2
 ```
 
 | Value | Xbox button | PlayStation button |
@@ -61,9 +64,9 @@ debugLogging = 0
 
 **Save the file and restart the game.** Your saved distance and button are read at startup. The controller shortcut reads the physical button; other game actions assigned to it still work.
 
-**Logging** is Off by default. Enable it using the menu's final entry or by setting **debugLogging = 1** in the same file; **0** turns it off. Messages appear in `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`.
+**GatherRarePlants = 0** leaves rare plants untouched; **1** includes supported Epic and Unique plants.
 
-Logging includes separate plant counts and reasons for skipped pickups, with up to three plant examples per gather. To investigate a missed plant, enable Logging, try Gather beside it, then check `UE4SS.log`.
+**Logging** offers Off (0), Error (1), Warning (2, default), Info (3) and Debug (4). Levels are cumulative; Off silences this mod. For missed pickups, select Debug, Apply, try Gather beside the plant, then check `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`. Debug includes plant counts, skip reasons and up to three examples per gather.
 
 ## Credits and source
 
@@ -112,7 +115,7 @@ Tailor your controller layout and make walking and menu access more comfortable.
 
 **[Press to Gather - Configurable](https://www.nexusmods.com/thebloodofdawnwalker/mods/449)**
 Gather nearby harvestable resources with one keyboard press or controller hold.
-**Highlights:** Adjustable 10–200 m range; 14 controller button choices; support for 17 additional wild plant types.
+**Highlights:** Adjustable 10–200 m range; 14 controller button choices; support for 17 additional wild plant types; optional rare-plant gathering.
 
 **[Less Wildlife](https://www.nexusmods.com/thebloodofdawnwalker/mods/711)**
 Make ordinary boar herds and wolf packs smaller—or larger.

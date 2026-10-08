@@ -11,6 +11,10 @@ return {
     -- Optional keyboard shortcut. Set to false to disable it.
     KeyboardGatherKey = "O",
 
-    -- First-run default; use the Logging toggle in Mod Settings thereafter.
+    -- First-run default; Epic (purple) and Unique verified plants are opt-in.
+    -- Use Mod Settings > Gather rare plants thereafter.
+    GatherRarePlants = false,
+
+    -- Legacy fallback; use the Logging selector in Mod Settings thereafter.
     debugLogging = false,
 }

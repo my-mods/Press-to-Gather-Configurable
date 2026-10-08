@@ -12,13 +12,13 @@
     "AI Media",
     "AI-Generated Content"
   ],
-  "summary": "Hold B / Circle to gather nearby harvestable resources, or press O. Choose your controller button and a 10–200 m distance in the Mod Settings. Defaults: 0.6-second hold and 20 m.",
+  "summary": "Hold your chosen controller button or press O to gather nearby resources. Adjustable 10?200 m range (20 m default), 14 button choices, and optional rare-plant gathering. Purple Epic and Unique plants are left for you to discover by default.",
   "file": {
     "name": "Press to Gather - Configurable",
     "archive_filename": "Press-to-Gather-Configurable.zip",
     "version": "1.4.0-dev",
     "category": "main",
-    "description": "Added support for more wild plants, including Cave Fungus, Comfrey and Green-Gilled Mushroom."
+    "description": "Added Gather rare plants, Off by default; enable it to include Epic (purple) and Unique plants. Fixed nearby plants being missed in streamed areas. Added five Logging levels with Warning as the default."
   },
   "required": [
     {
@@ -38,7 +38,7 @@
     }
   ],
   "optional": [],
-  "artwork_license_scope": "Game imagery and other third-party material retain their owners’ rights and are excluded from mod-code license grants.",
+  "artwork_license_scope": "Game imagery and other third-party material retain their ownersâ€™ rights and are excluded from mod-code license grants.",
   "liveSettings": {
     "minimumMenuVersion": "1.0.6",
     "HookProcessConsoleExec": 1,

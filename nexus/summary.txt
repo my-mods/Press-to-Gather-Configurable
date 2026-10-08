@@ -1,1 +1,1 @@
-Hold B / Circle to gather nearby harvestable resources, or press O. Choose your controller button and a 10–200 m distance in Mod Settings. Defaults: 0.6-second hold and 20 m.
+Hold your chosen controller button or press O to gather nearby resources. Adjustable 10?200 m range (20 m default), 14 button choices, and optional rare-plant gathering. Purple Epic and Unique plants are left for you to discover by default.

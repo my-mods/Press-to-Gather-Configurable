@@ -22,11 +22,12 @@ local plants = {
     WildStrawberry = {'Wild Strawberry', 'ITM_Consumable_Berrys2'},
     YellowSweetClover = {'Yellow Sweet Clover', 'ITM_Ingredient_Herbs1'},
 }
-local allowed = {}
+local allowed, plantItems = {}, {}
 for suffix, entry in pairs(plants) do
     allowed['BlueprintGeneratedClass '..PREFIX..suffix..'.BP_Lootable_'..suffix..'_C'] = {
         label=entry[1], item=ITEM_PREFIX..entry[2]..'.'..entry[2],
     }
+    plantItems[ITEM_PREFIX..entry[2]..'.'..entry[2]]=true
 end
 local function valid(object) return object ~= nil and object:IsValid() end
 local function enum(value) return tonumber(tostring(value)) end
@@ -62,7 +63,8 @@ end
 
 -- Seed on the first request in a world; subsequent requests use the cache and
 -- construction notifications. Missing notifications fail this feature closed.
--- FindAllOf's ambiguous short Blueprint name is filtered by exact class paths.
+-- The ambiguous short Blueprint name is filtered by exact botanical class
+-- paths. The expected plant item is revalidated before every interaction.
 function M.find(scope)
     if not ready then return {}, 'plant notifications unavailable' end
     local address=scope.world:GetAddress()
@@ -120,7 +122,22 @@ function M.observe(actor, classCache)
     return entry
 end
 
-function M.eligible(actor, entry)
+-- Applied to both botanical lootables and ordinary HarvestableComponents.
+-- Only verified plant item paths are subject to this policy; native nonplants
+-- remain unchanged. EItemRarityType: Epic=5 (purple), Unique=6, Quest=7.
+function M.itemAllowed(item, gatherRarePlants)
+    local path=item:GetFullName():match('^[^ ]+ (.+)$')
+    if not plantItems[path] then return true end
+    local rarity=enum(item.ItemRarity)
+    if rarity==5 or rarity==6 then
+        if gatherRarePlants then return true end
+        return false,'rare plant disabled'
+    end
+    if rarity==1 or rarity==2 or rarity==3 or rarity==4 then return true end
+    return false,'quest or unknown plant rarity'
+end
+
+function M.eligible(actor, entry, gatherRarePlants)
     local label=entry.label
     local comp=actor.LootableComponent
     if not valid(comp) then return nil,label,'missing lootable component' end
@@ -142,6 +159,8 @@ function M.eligible(actor, entry)
     if not valid(item) then return nil,label,'missing item' end
     local name=item:GetFullName()
     if name:match('^[^ ]+ (.+)$')~=entry.item then return nil,label,'item mismatch' end
+    local permitted,reason=M.itemAllowed(item,gatherRarePlants)
+    if not permitted then return nil,label,reason end
     return comp,label
 end
 

@@ -43,6 +43,7 @@ local settings = {
     gather_key = nativeKey,
     keyboard_key = keyboardKey,
     debugLogging = config.debugLogging == true,
+    gather_rare_plants = config.GatherRarePlants == true,
 }
 local directory=debug.getinfo(1,'S').source:match('^@(.+[/\\])[^/\\]+$')
 if directory then
@@ -59,7 +60,7 @@ end
 ---@param actor UObject harvestable actor in radius
 ---@return UObject? comp eligible component, or nil
 ---@return string|nil itemName item name when eligible
-local function eligible_comp(actor)
+local function eligible_comp(actor, gatherRarePlants)
     -- Only use genuine HarvestableComponents.
     -- Botanical lootables use their separate, explicit eligibility rules.
     local comp = actor.HarvestableComponent
@@ -82,6 +83,8 @@ local function eligible_comp(actor)
         return nil,nil,'missing item'
     end
 
+    local permitted,reason=Plants.itemAllowed(item,gatherRarePlants)
+    if not permitted then return nil,item:GetFullName(),reason end
     return comp, item:GetFullName()
 end
 
@@ -91,11 +94,10 @@ end
 local function gather(comp, itemName, d2)
     comp:StartInteraction()
 
-    local dist = math.sqrt(d2)
     local state = tonumber(tostring(comp:GetInteractionState()))
     local changed = state ~= nil and state ~= STATE_INTERACTABLE
     if settings.debugLogging and changed then
-        Log.debug(string.format("Gathered %s at %.0fu", itemName, dist))
+        Log.debug(string.format("Gathered %s at %.0fu", itemName, math.sqrt(d2)))
     end
     return changed
 end
@@ -104,6 +106,21 @@ end
 -- refreshed after missed candidates or capacity overflow; construction supplies new actors.
 -- Process at most eight actors or one millisecond per 16ms continuation; an
 -- initial/recovery FindAllOf remains indivisible and needs live timing.
+-- UE4SS AActor:GetWorld walks Outer. Streamed world-partition actors can have
+-- an external package World there; Level.OwningWorld is their gameplay world.
+local function actor_world(actor, botanical)
+    local ok,owner=pcall(function()
+        local level=actor:GetLevel()
+        if level and level:IsValid() then
+            local world=level.OwningWorld
+            if world and world:IsValid() then return world end
+        end
+    end)
+    if ok and owner then return owner end
+    -- Preserve ordinary native harvestables on older/unavailable level wrappers;
+    -- botanical actors fail closed rather than accepting uncertain ownership.
+    if not botanical then return actor:GetWorld() end
+end
 local activeJob
 local firstGatherReport = true
 local plantQueryWarning = false
@@ -172,12 +189,24 @@ local function gather_nearby(scope)
                 job.index, count=job.index+1,count+1
                 local okActor, failure=pcall(function()
                     if not actor or not actor:IsValid() then job.skipped=job.skipped+1; return end
-                    local actorWorld = actor:GetWorld()
+                    local actorWorld = actor_world(actor,botanical)
                     if not actorWorld or not actorWorld:IsValid() then
                         if botanical then Plants.retry() else Harvestables.retry() end
                     end
                     if not actorWorld or not actorWorld:IsValid() or actorWorld:GetAddress() ~= scope.world:GetAddress() then
-                        job.skipped=job.skipped+1; return
+                        job.skipped=job.skipped+1
+                        if settings.debugLogging then
+                            local reason=(botanical and 'plant: ' or 'harvestable: ')..
+                                ((not actorWorld or not actorWorld:IsValid()) and 'world unavailable' or 'different world')
+                            job.reasons[reason]=(job.reasons[reason] or 0)+1
+                            if job.examples<3 then
+                                job.examples=job.examples+1
+                                Log.debug('Actor not requested: '..actor:GetFullName()..'; '..reason..
+                                    '; actor world '..tostring(actorWorld and actorWorld:IsValid() and actorWorld:GetAddress() or 'invalid')..
+                                    '; player world '..tostring(scope.world:GetAddress())..'.')
+                            end
+                        end
+                        return
                     end
                     local address=actor:GetAddress()
                     if job.seen[address] then return end
@@ -200,8 +229,8 @@ local function gather_nearby(scope)
                         job.near=job.near+1
                         if botanical then job.plantNear=job.plantNear+1 end
                         local comp,itemName,reason
-                        if botanical then comp,itemName,reason=Plants.eligible(actor,plantEntry)
-                        else comp,itemName,reason=eligible_comp(actor) end
+                        if botanical then comp,itemName,reason=Plants.eligible(actor,plantEntry,settings.gather_rare_plants)
+                        else comp,itemName,reason=eligible_comp(actor,settings.gather_rare_plants) end
                         if comp then
                             job.requested=job.requested+1
                             if botanical then job.plantRequests=job.plantRequests+1 end

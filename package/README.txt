@@ -12,6 +12,8 @@ Gather also checks these plants when you use the shortcut:
 - **Herbs:** Aconite, Comfrey, Common Yarrow, Perilla, Ribwort Plantain, St John's Wort, Tansy and Yellow Sweet Clover.
 - **Berries:** Blueberry, Raspberry and Wild Strawberry.
 
+**Gather rare plants** is **Off by default**, leaving rare finds for you to discover. Turn it On to include verified **Epic (purple)** and **Unique** plants, including Cave Fungus. **Master (blue)** plants, such as Chanterelle, Perilla and Tansy, are gathered normally. Quest or unknown plant rarities are excluded. Only the known plant types listed above are supported.
+
 Plants must be available to interact with. Owned, quest-marked and risky pickups are excluded. Plant checks run on demand; discovered plants are reused for later presses, with newly loaded plants added as they appear.
 
 ## Dependencies
@@ -30,13 +32,13 @@ Mod Setting Menu 1.0.6 or later is required. Its callback bridge also requires `
 
 Settings are prepared when the game starts and are available from the main menu before the first save. Press **Apply** to save and update the active game. Changes made while loading are retained for the next valid player. Restore and Discard leave saved settings unchanged; Reset takes effect after Apply.
 
-Distance and Logging update immediately. Changing Gather Button rebuilds its cached key once, clears the current hold, and requires release before gathering again. A gather already in progress finishes with the distance captured when it began.
+Distance, Gather rare plants and Logging update immediately. Changing Gather Button rebuilds its cached key once, clears the current hold, and requires release before gathering again. A gather already in progress keeps the distance captured when it began. Turning Gather rare plants Off also stops remaining rare-plant pickups in that gather.
 
-Logging is the final, sole diagnostic control. It changes immediately; Warning is the default; detailed tracing requires Debug. Logs are written to `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`. Settings are never polled.
+Logging is the final, sole diagnostic control. It changes immediately; Warning is the default and verbose tracing requires Debug. Logs are written to `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`. Settings are never polled.
 
 Required: [Mod Setting Menu 1.0.6 or later](https://www.nexusmods.com/thebloodofdawnwalker/mods/271). Open Mod Settings and press Apply to save and update gameplay.
 
-**With the menu:** Open **Main Menu → Mod Settings → Press to Gather - Configurable**. Set **Gather Distance** and **Gather Button**, select **Apply** to save and update the active game. Restarting the game also applies the saved settings.
+**With the menu:** Open **Main Menu → Mod Settings → Press to Gather - Configurable**. Set **Gather Distance**, **Gather Button** and **Gather rare plants**, select **Apply** to save and update the active game. Restarting the game also applies the saved settings.
 
 **Editing the settings file:**
 
@@ -53,7 +55,8 @@ In its existing **[Settings]** section, change **GatherRadiusMeters** to a value
 [Settings]
 GatherRadiusMeters = 20
 GatherButton = 0
-debugLogging = 0
+GatherRarePlants = 0
+logLevel = 2
 ```
 
 | Value | Xbox button | PlayStation button |
@@ -75,9 +78,9 @@ debugLogging = 0
 
 **Save the file and restart the game.** Your saved distance and button are also read at startup. The controller shortcut reads the physical button; other game actions assigned to it still work.
 
-**Logging** offers Off, Error, Warning (default), Info and Debug. Select Debug for troubleshooting details.
+**GatherRarePlants = 0** leaves rare plants untouched; **1** includes supported Epic and Unique plants.
 
-Logging includes separate plant counts and reasons for skipped pickups, with up to three plant examples per gather. To investigate a missed plant, enable Logging, try Gather beside it, then check `UE4SS.log`.
+**Logging** offers Off (0), Error (1), Warning (2, default), Info (3) and Debug (4). Levels are cumulative; Off silences this mod. For missed pickups, select Debug, Apply, try Gather beside the plant, then check `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`. Debug includes plant counts, skip reasons and up to three examples per gather.
 
 ## Credits and source
 
@@ -93,7 +96,7 @@ See `LICENSE.txt` for reuse terms and the included license notices.
 
 Repeated Gather requests reuse validated harvestable actors and construction notifications. The first request in a world and recovery after interruption or cache overflow still perform discovery. Distance, interaction state and plant ownership are checked on each request. If construction notifications are unavailable, ordinary harvestables retain discovery on every request.
 
-Enable the final **Logging** offers Off, Error, Warning (default), Info and Debug. Select Debug for troubleshooting details.
+Enable the final **Logging** setting for diagnostics in `Dawnwalker/Binaries/Win64/ue4ss/UE4SS.log`. Warning is the normal default; use Debug to investigate issues. Timings and offline checks do not establish an in-game frame-rate improvement.
 
 ### Logging levels
 
