@@ -78,6 +78,9 @@ local function eligible_comp(actor, gatherRarePlants)
         return nil,nil,'interaction disabled'
     end
 
+    local questSafe,questReason=Plants.questEligible(comp)
+    if not questSafe then return nil,nil,questReason end
+
     local item = comp.HarvestableConfig.Item
     if item == nil or not item:IsValid() then
         return nil,nil,'missing item'

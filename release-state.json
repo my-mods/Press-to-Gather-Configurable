@@ -63,9 +63,9 @@
       ],
       "pending": {
         "impact": "minor",
-        "rationale": "Complete Nexus-baseline working-tree delta: cached harvestable discovery and streaming/world-change recovery; user-owned pending rare-plant opt-in and streamed-area botanical fixes are preserved but not committed by this logging task; add cumulative five-level Logging, preserving startup schema completion and current menu application; update dependency/public documentation. Release preparation: verified unchanged live Nexus baseline on 2026-10-08; consolidated complete player changelog and preserved published page formatting/history.",
+        "rationale": "Reviewed complete direct recorded Nexus 1.3 baseline delta offline: cached harvestable discovery with interruption/world/streaming recovery, rare-plant opt-in and retained exact plant/item safety policy, five cumulative logging levels and preserving settings migration, documentation/dependency updates. Both ordinary harvestables and botanical lootables now share strict quest-status checks before native interaction; uncertainty rejects only the candidate.",
         "majorOverride": false,
-        "reviewedInputs": "3cd7f07efec2c1373947c15840f9dd34d2744b668e3cf1800adb105cf39ba915",
+        "reviewedInputs": "fd601b244ac05b6715489616e2ee9f06286f292f2e3d067023de96d3a12d88be",
         "divergenceReviewed": false
       }
     }

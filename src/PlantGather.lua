@@ -137,6 +137,18 @@ function M.itemAllowed(item, gatherRarePlants)
     return false,'quest or unknown plant rarity'
 end
 
+-- StartInteraction must never automate a quest-critical candidate. Both native
+-- queries must positively return false; unavailable/throwing queries reject
+-- only this candidate. Ordinary harvestables and botanical lootables share it.
+function M.questEligible(comp)
+    local ok, safe = pcall(function()
+        return comp:IsQuestInteractable()==false and comp:IsQuestImportantInteractable()==false
+    end)
+    if not ok then return false,'quest status unavailable' end
+    if not safe then return false,'quest or unknown interaction' end
+    return true
+end
+
 function M.eligible(actor, entry, gatherRarePlants)
     local label=entry.label
     local comp=actor.LootableComponent
@@ -145,10 +157,8 @@ function M.eligible(actor, entry, gatherRarePlants)
     if not valid(owner) or owner:GetAddress()~=actor:GetAddress() then return nil,label,'component owner mismatch' end
     if enum(comp:GetInteractionState())~=4 then return nil,label,'not interactable' end
     if comp:IsInteractionEnabled()~=true then return nil,label,'interaction disabled' end
-    -- Unknown/missing flags reject only this plant, without affecting harvestables.
-    if comp:IsQuestInteractable()~=false or comp:IsQuestImportantInteractable()~=false then
-        return nil,label,'quest interaction'
-    end
+    local questSafe,questReason=M.questEligible(comp)
+    if not questSafe then return nil,label,questReason end
     -- The game's risk query refreshes its stealable-volume information.
     local risk=enum(comp:GetInteractionRiskType())
     if comp.bIsStealable~=false then return nil,label,'owned or ownership unavailable' end
