@@ -1,6 +1,6 @@
 ## 1.4.1
 
-- Leave quest-marked resources untouched, including ordinary harvestables, while continuing to gather safe nearby resources.
+- Updated the mod for patch 1.1.
 
 ## 1.4.0
 

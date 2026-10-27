@@ -66,7 +66,7 @@
         "impact": "patch",
         "rationale": "Complete remaining delta from verified Nexus 1.4.0: shared quest-safety exclusion for ordinary harvestables and botanical candidates plus current game metadata; no new settings or features.",
         "majorOverride": false,
-        "reviewedInputs": "204f2e92b504d9eed8a3385a9b54d9f216a5eda7e786d5a9fa50391dfab0eb11",
+        "reviewedInputs": "5578c323b3594372db00a388a0b979241ef829ab8f449c4331caf24c299284d2",
         "divergenceReviewed": false
       }
     }
