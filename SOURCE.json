@@ -14,7 +14,7 @@
   },
   "customization": "Configurable controller button, default B/Circle held 0.6s; Mod Settings distance 10-200m in 10m steps, default 20m; native input lifecycle and bounded actor batches; exact class and item allowlist for 17 unowned botanical lootables, with on-demand cached discovery and quest/ownership checks",
   "shared_dependency": "SettingsStore from ue4ss-common; exact commit, hashes and license pinned in ue4ss-common.lock.json",
-  "reference_game_build": "25232147",
+  "reference_game_build": "25915545",
   "reference_ue4ss_sha": "97b7e501c19d8b2b7c662feee73aaa0dc1f0a4d1",
   "distribution": {
     "basis": "Upstream Nexus permissions permit credited modifications and redistribution. Sales are prohibited; Donation Points require separate permission.",
@@ -28,5 +28,7 @@
     "loaderRequirement": "HookProcessConsoleExec=1",
     "startup": "Prepare missing preferences once; do not activate gameplay effects.",
     "callback": "Validate committed numeric values, preserve file-only keys, merge pending changes and update affected runtime state. No configuration I/O or polling."
-  }
+  },
+  "reference_game_patch": "1.1",
+  "compatibility_evidence": "Offline review of build 25915545 reflection registrations, interaction/risk/rarity enums and 17 botanical class/item mappings; source and archive regression checks. In-game pickup remains unverified."
 }
